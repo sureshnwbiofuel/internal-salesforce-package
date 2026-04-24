@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_features__c</fullName>
+    <externalId>false</externalId>
+    <label>Vehicle features</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hydro-Jetter (HYD)</fullName>
+                <default>false</default>
+                <label>Hydro-Jetter (HYD)</label>
+            </value>
+            <value>
+                <fullName>Liftgate (LG)</fullName>
+                <default>false</default>
+                <label>Liftgate (LG)</label>
+            </value>
+            <value>
+                <fullName>Portable Unit (P/U)</fullName>
+                <default>false</default>
+                <label>Portable Unit (P/U)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

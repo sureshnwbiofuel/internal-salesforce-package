@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Zone__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Zone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VAN</fullName>
+                <default>false</default>
+                <label>VAN</label>
+            </value>
+            <value>
+                <fullName>WS</fullName>
+                <default>false</default>
+                <label>WS</label>
+            </value>
+            <value>
+                <fullName>CLACK</fullName>
+                <default>false</default>
+                <label>CLACK</label>
+            </value>
+            <value>
+                <fullName>PDX-E</fullName>
+                <default>false</default>
+                <label>PDX-E</label>
+            </value>
+            <value>
+                <fullName>PDX-N</fullName>
+                <default>false</default>
+                <label>PDX-N</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_Features__c</fullName>
+    <description>Optimize transactions via bulkification, trigger frameworks, async apex and order of execution</description>
+    <externalId>false</externalId>
+    <label>Vehicle Features</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>551</fullName>
+                <default>false</default>
+                <label>551</label>
+            </value>
+            <value>
+                <fullName>UCO</fullName>
+                <default>false</default>
+                <label>Used Cooking Oil</label>
+            </value>
+            <value>
+                <fullName>P/U</fullName>
+                <default>false</default>
+                <label>Portable Unit</label>
+            </value>
+            <value>
+                <fullName>LC</fullName>
+                <default>false</default>
+                <label>Low Clearance</label>
+            </value>
+            <value>
+                <fullName>LG</fullName>
+                <default>false</default>
+                <label>Liftgate</label>
+            </value>
+            <value>
+                <fullName>PW</fullName>
+                <default>false</default>
+                <label>Pressure Washer</label>
+            </value>
+            <value>
+                <fullName>BG</fullName>
+                <default>false</default>
+                <label>Brown Grease</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

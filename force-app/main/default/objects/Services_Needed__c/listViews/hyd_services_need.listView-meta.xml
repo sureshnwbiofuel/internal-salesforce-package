@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>hyd_services_need</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>RECORDTYPE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Services_Needed__c.Drain_Cleaning</value>
+    </filters>
+    <label>Bulk Edit HYD</label>
+</ListView>

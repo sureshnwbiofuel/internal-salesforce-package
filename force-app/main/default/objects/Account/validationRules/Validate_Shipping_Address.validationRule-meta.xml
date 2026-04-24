@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Shipping_Address</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( ISCHANGED(ShippingStreet ), ISBLANK(  ShippingStreet ),
+ISCHANGED(ShippingCity ), ISBLANK(  ShippingCity ),
+ISCHANGED(ShippingState ), ISBLANK(  ShippingState ),
+ISCHANGED(ShippingPostalCode ), ISBLANK(  ShippingPostalCode ),
+ISCHANGED(ShippingCountry ), ISBLANK(  ShippingCountry ) )</errorConditionFormula>
+    <errorMessage>Please provide Shipping Address information</errorMessage>
+</ValidationRule>

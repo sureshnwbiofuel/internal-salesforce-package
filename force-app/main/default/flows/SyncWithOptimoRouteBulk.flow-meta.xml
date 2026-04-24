@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sync Work Orders from OptimoRoute</description>
+        <name>Sync_Work_Orders_from_OptimoRoute</name>
+        <label>Sync Work Orders from OptimoRoute</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>OptimoRouteBulkService</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>itemsList</name>
+            <value>
+                <elementReference>recordIds</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>OptimoRouteBulkService</nameSegment>
+    </actionCalls>
+    <apiVersion>65.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>SyncWithOptimoRouteBulk {!$Flow.CurrentDateTime}</interviewLabel>
+    <isAdditionalPermissionRequiredToRun>true</isAdditionalPermissionRequiredToRun>
+    <label>Bulk Sync With OptimoRoute</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Sync_Work_Orders_from_OptimoRoute</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

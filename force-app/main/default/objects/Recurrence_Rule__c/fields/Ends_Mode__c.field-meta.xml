@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ends_Mode__c</fullName>
+    <externalId>false</externalId>
+    <label>Ends Mode</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Never</fullName>
+                <default>false</default>
+                <label>Never</label>
+            </value>
+            <value>
+                <fullName>On Date</fullName>
+                <default>false</default>
+                <label>On Date</label>
+            </value>
+            <value>
+                <fullName>After X Occurences</fullName>
+                <default>false</default>
+                <label>After X Occurences</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

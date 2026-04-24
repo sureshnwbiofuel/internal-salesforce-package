@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pricing_Tier__c</fullName>
+    <externalId>false</externalId>
+    <label>Pricing Tier</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Low ($125)($.41)</fullName>
+                <default>false</default>
+                <label>Low ($125)($.41)</label>
+            </value>
+            <value>
+                <fullName>Middle($135)($.46)</fullName>
+                <default>false</default>
+                <label>Middle($135)($.46)</label>
+            </value>
+            <value>
+                <fullName>High($225)($.49)</fullName>
+                <default>false</default>
+                <label>High($225)($.49)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

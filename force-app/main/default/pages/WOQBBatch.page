@@ -1,0 +1,9 @@
+<apex:page standardController="WorkOrder"
+           recordSetVar="workOrders"
+           extensions="WorkOrderQBBatchController">
+    <apex:form >
+        <apex:pageMessages />
+        <apex:commandButton value="Run Batch"
+                            action="{!runBatch}" />
+    </apex:form>
+</apex:page>

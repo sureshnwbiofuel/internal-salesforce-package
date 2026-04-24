@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scheduling_Range__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( NOT(ISNULL(Order_Date__c )) , TEXT(MONTH(Order_Date__c - (WEEKDAY(Order_Date__c ) - 1))) + &quot;/&quot; + TEXT(DAY(Order_Date__c - (WEEKDAY(Order_Date__c ) - 1))) + &quot;/&quot; + TEXT(YEAR(Order_Date__c - (WEEKDAY(Order_Date__c ) - 1)))+&apos; To &apos;+ 
+TEXT(MONTH(Order_Date__c + (7 - WEEKDAY(Order_Date__c )))) + &quot;/&quot; + TEXT(DAY(Order_Date__c + (7 - WEEKDAY(Order_Date__c )))) + &quot;/&quot; +  TEXT(YEAR(Order_Date__c + (7 - WEEKDAY(Order_Date__c )))),&quot;&quot;  )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Scheduling Range</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

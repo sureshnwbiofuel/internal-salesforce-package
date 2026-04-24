@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RoutingBG</fullName>
+    <columns>Account</columns>
+    <columns>Status</columns>
+    <columns>Work_Order_Number_Display__c</columns>
+    <columns>Last_Completed_Date__c</columns>
+    <columns>Frequency_Days__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Order_Date__c</columns>
+    <columns>Optimo_Date__c</columns>
+    <columns>Scheduling_Range__c</columns>
+    <columns>Connected_Fixture__c</columns>
+    <columns>GRD_Location_Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Scheduling_Range__c</field>
+        <operation>equals</operation>
+        <value>5/31/2026 To 6/6/2026</value>
+    </filters>
+    <label>RoutingBG</label>
+</ListView>

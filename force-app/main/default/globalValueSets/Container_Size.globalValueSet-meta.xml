@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>42</fullName>
+        <default>false</default>
+        <label>ConFab EcoTub 42G</label>
+    </customValue>
+    <customValue>
+        <fullName>50</fullName>
+        <default>false</default>
+        <label>ConFab EcoTub 50G</label>
+    </customValue>
+    <customValue>
+        <fullName>78</fullName>
+        <default>false</default>
+        <label>ConFab EcoTub 78G</label>
+    </customValue>
+    <customValue>
+        <fullName>55</fullName>
+        <default>false</default>
+        <label>Standard 55G Drum</label>
+    </customValue>
+    <customValue>
+        <fullName>153</fullName>
+        <default>false</default>
+        <label>NW Bio 153G Square</label>
+    </customValue>
+    <customValue>
+        <fullName>134</fullName>
+        <default>false</default>
+        <label>ConFab 134G</label>
+    </customValue>
+    <customValue>
+        <fullName>188</fullName>
+        <default>false</default>
+        <label>NW Bio 188G Square</label>
+    </customValue>
+    <customValue>
+        <fullName>209</fullName>
+        <default>false</default>
+        <label>ConFab 209G</label>
+    </customValue>
+    <customValue>
+        <fullName>314</fullName>
+        <default>false</default>
+        <label>ConFab 314G</label>
+    </customValue>
+    <customValue>
+        <fullName>431.92</fullName>
+        <default>false</default>
+        <label>Frontline 4280</label>
+    </customValue>
+    <customValue>
+        <fullName>147.66</fullName>
+        <default>false</default>
+        <label>Frontline 3066</label>
+    </customValue>
+    <customValue>
+        <fullName>213.98</fullName>
+        <default>false</default>
+        <label>Frontline 3080</label>
+    </customValue>
+    <masterLabel>Container Size</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

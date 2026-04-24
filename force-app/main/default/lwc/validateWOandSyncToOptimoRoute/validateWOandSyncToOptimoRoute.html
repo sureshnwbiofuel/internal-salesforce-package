@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-m-around_medium">
+        <lightning-card title="Validate WO and Sync to Optimo Route" icon-name="standard:work_order">
+            <template if:true={isValidationSuccess}> Validation Success </template>
+             <template if:false={isValidationSuccess}> Validation Failure </template>
+            
+            <div class="slds-m-around_medium">
+                <div class="slds-p-around_medium">
+            <lightning-datatable
+                key-field="fieldName"
+                data={tableData}
+                columns={columns}>
+            </lightning-datatable>
+        </div>
+                <lightning-button label="Close" onclick={closeAction} variant="brand">  
+                    </lightning-button>
+                    </div>  
+                    </lightning-card>
+                    </div>
+
+</template>

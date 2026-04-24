@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Previous_Vendo__c</fullName>
+    <externalId>false</externalId>
+    <label>Previous Vendo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Mahoney</fullName>
+                <default>false</default>
+                <label>Mahoney</label>
+            </value>
+            <value>
+                <fullName>Oregon Oils</fullName>
+                <default>false</default>
+                <label>Oregon Oils</label>
+            </value>
+            <value>
+                <fullName>DarPro</fullName>
+                <default>false</default>
+                <label>DarPro</label>
+            </value>
+            <value>
+                <fullName>Baker</fullName>
+                <default>false</default>
+                <label>Baker</label>
+            </value>
+            <value>
+                <fullName>River City</fullName>
+                <default>false</default>
+                <label>River City</label>
+            </value>
+            <value>
+                <fullName>Scout</fullName>
+                <default>false</default>
+                <label>Scout</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

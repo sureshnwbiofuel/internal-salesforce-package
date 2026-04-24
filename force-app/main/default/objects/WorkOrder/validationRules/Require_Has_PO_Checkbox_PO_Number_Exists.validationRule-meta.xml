@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Has_PO_Checkbox_PO_Number_Exists</fullName>
+    <active>true</active>
+    <description>Prevents the record from being saved if a PO Number is provided but the &quot;Has PO&quot; checkbox is set to False.</description>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(PO_Number__c)),
+    Has_PO__c = False
+)</errorConditionFormula>
+    <errorDisplayField>Has_PO__c</errorDisplayField>
+    <errorMessage>If a PO Number is provided, the &apos;Has PO&apos; checkbox must be checked.</errorMessage>
+</ValidationRule>

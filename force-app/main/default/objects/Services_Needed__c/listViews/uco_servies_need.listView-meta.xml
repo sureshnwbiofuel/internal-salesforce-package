@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>uco_servies_need</fullName>
+    <columns>Account__c</columns>
+    <columns>NAME</columns>
+    <columns>Primary_Time_Window_From__c</columns>
+    <columns>Primary_Time_Window_To__c</columns>
+    <columns>Allowed_Days__c</columns>
+    <columns>Frequency_Days__c</columns>
+    <columns>Monthly_Gallons__c</columns>
+    <columns>Door_Key__c</columns>
+    <columns>Door_Code__c</columns>
+    <columns>Alarm_Code__c</columns>
+    <columns>Vehicle_Features__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Services_Needed__c.Used_Cooking_Oil</value>
+    </filters>
+    <label>UCO SERVICES NEED</label>
+</ListView>
