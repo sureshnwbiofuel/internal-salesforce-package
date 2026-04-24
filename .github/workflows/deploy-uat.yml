@@ -1,0 +1,33 @@
+name: Validate PR to UAT
+
+on:
+  pull_request:
+    branches: [uat] # Triggers when someone wants to merge into the UAT branch
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Authenticate UAT (JWT)
+        run: |
+          echo "${{ secrets.SF_SERVER_KEY }}" > server.key
+          sf org login jwt \
+            --client-id ${{ secrets.UAT_CLIENT_ID }} \
+            --jwt-key-file server.key \
+            --username ${{ secrets.UAT_USERNAME }} \
+            --instance-url https://test.salesforce.com \
+            --alias uat-org
+
+      - name: Validate Deploy (Check-Only)
+        run: |
+          sf project deploy start \
+            --source-dir force-app \
+            --target-org uat-org \
+            --test-level RunLocalTests \
+            --dry-run
