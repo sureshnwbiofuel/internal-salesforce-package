@@ -38,6 +38,7 @@
     </actionOverrides>
     <brand>
         <headerColor>#ECA858</headerColor>
+        <logo>logo_2</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -47,78 +48,11 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>NW Biofuel</label>
     <navType>Standard</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <recordType>WorkOrder.Default_Work_Orders</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <recordType>WorkOrder.Default_Work_Orders</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <recordType>WorkOrder.Default_Work_Orders</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Work_Order_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>WorkOrder</pageOrSobjectType>
-        <recordType>WorkOrder.Default_Work_Orders</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
         <content>Lead_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Lead</pageOrSobjectType>
@@ -130,6 +64,60 @@
         <content>Lead_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Lead</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Grease_Trap</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Grease_Trap</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
@@ -199,6 +187,92 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Grease_Trap</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Grease_Trap</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Service_Needed_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
+        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
+        <type>Flexipage</type>
+        <profile>NW Biofuel Restricted Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>Lead_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>Lead</pageOrSobjectType>
@@ -210,218 +284,6 @@
         <content>Lead_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Lead</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Drain_Cleaning</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Grease_Trap</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Grease_Trap</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Grease_Trap</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Grease_Trap</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Interceptor</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Interceptor</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Interceptor</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Interceptor</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Used_Cooking_Oil</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Waste_Run</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Waste_Run</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Waste_Run</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <recordType>Services_Needed__c.Waste_Run</recordType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>NW Biofuel Restricted Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Services_Needed_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Services_Needed__c</pageOrSobjectType>
         <type>Flexipage</type>
         <profile>NW Biofuel Restricted Admin</profile>
     </profileActionOverrides>
@@ -433,6 +295,7 @@
     <tabs>standard-Opportunity</tabs>
     <tabs>standard-WorkOrder</tabs>
     <tabs>Integration_Logs__c</tabs>
+    <tabs>Invoice__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>NW_Biofuel_UtilityBar</utilityBar>
 </CustomApplication>
