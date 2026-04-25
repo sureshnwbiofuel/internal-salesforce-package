@@ -30,6 +30,8 @@
         <members>WorkOrder.Invoice__c</members>
         <members>WorkOrder.Invoice_Id__c</members>
         <members>WorkOrder.Invoice_Status__c</members>
+        <members>Account.Group__c</members>
+        <members>Services_Needed__c.Employee_s_Arrive_At__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -46,11 +48,11 @@
         <members>Invoice__c</members>
         <name>CustomTab</name>
     </types>
-    <!--types>
+    <types>
         <members>Account_Record_Page1</members>
         <members>Work_Order_Record_Page</members>
         <name>FlexiPage</name>
-    </types-->
+    </types>
     <types>
         <members>Create_Recurring_WorkOrder</members>
         <members>Create_Update_Invoice_and_WorkOrder</members>
@@ -60,7 +62,7 @@
         <members>WorkOrderCreation</members>
         <name>Flow</name>
     </types>
-    <!--types>
+    <types>
         <members>Account-Account Layout</members>
         <members>Integration_Mapping__c-Integration Mapping Layout</members>
         <members>Invoice__c-Invoice Layout</members>
@@ -71,15 +73,11 @@
         <members>Services_Needed__c-Waste Run Service Needed Layout</members>
         <members>WorkOrder-Work Order Layout</members>
         <name>Layout</name>
-    </types-->
+    </types>
     <types>
         <members>Services_Needed__c.SetPOFalseForUCO</members>
         <members>WorkOrder.Require_Has_PO_Checkbox_PO_Number_Exists</members>
         <name>ValidationRule</name>
-    </types>
-    <types>
-        <members>NW_Biofuel</members>
-        <name>CustomApplication</name>
     </types>
     <version>65.0</version>
 </Package>

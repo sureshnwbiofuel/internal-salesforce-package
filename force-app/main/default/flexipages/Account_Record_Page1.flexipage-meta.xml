@@ -24,6 +24,9 @@
                         <valueListItems>
                             <value>CreateAccountChannel</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>AddToActionableList</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -145,8 +148,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Payment_Terms__c</fieldItem>
-                <identifier>RecordPayment_Terms_cField</identifier>
+                <fieldItem>Record.Payment_Term__c</fieldItem>
+                <identifier>RecordPayment_Term_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -613,6 +616,144 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Services__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Services_Needed_Number_Display__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>GRD_Location_Name__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Last_Completed__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Frequency_Days__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Due_Date__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Services Needed</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Account.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>WorkOrders</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>Work_Order_Number_Display__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>GRD_Location_Name__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Status</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Order_Date__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Due_Date__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Work Orders</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>Order_Date__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
                     <value>NONE</value>
                 </componentInstanceProperties>
@@ -629,28 +770,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-0e6f604d-2b62-419e-98ec-3bfc091598c8</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>runtime_revenue_invoice_preview:previewInvoicesAction</componentName>
-                <identifier>runtime_revenue_invoice_preview_previewInvoicesAction</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-ca819cdf-6c85-4ed6-836e-658830a9fc6e</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-cb87c194-06f5-499a-aa8c-53bcdaba2f37</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-d99pi1iv9pm</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-2321ef63-f370-483b-8730-572b4d17464c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -686,62 +805,6 @@
                 <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-ca819cdf-6c85-4ed6-836e-658830a9fc6e</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.invoice</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-cb87c194-06f5-499a-aa8c-53bcdaba2f37</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>FOG Reports</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-d99pi1iv9pm</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>COV</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-2321ef63-f370-483b-8730-572b4d17464c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Service Contract</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab4</identifier>
-            </componentInstance>
-        </itemInstances>
         <mode>Replace</mode>
         <name>maintabs</name>
         <type>Facet</type>
@@ -753,12 +816,12 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>MassChangeOwner</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>New</value>
                         </valueListItems>
                     </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>maxRecordsToDisplay</name>
@@ -780,7 +843,7 @@
                     <name>relatedListFieldAliases</name>
                     <valueList>
                         <valueListItems>
-                            <value>Services_Needed_Number_Display__c</value>
+                            <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
                             <value>GRD_Location_Name__c</value>
@@ -812,18 +875,22 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldAlias</name>
-                    <value>Services_Needed_Number_Display__c</value>
+                    <value>__DEFAULT__</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldOrder</name>
-                    <value>Descending</value>
+                    <value>Default</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
-                <identifier>lst_dynamicRelatedList</identifier>
+                <identifier>lst_dynamicRelatedList3</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -851,12 +918,6 @@
                 </componentInstanceProperties>
                 <componentName>runtime_sales_activities:activityPanel</componentName>
                 <identifier>runtime_sales_activities_activityPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>runtime_slack:slackRecordChannel</componentName>
-                <identifier>runtime_slack_slackRecordChannel</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
