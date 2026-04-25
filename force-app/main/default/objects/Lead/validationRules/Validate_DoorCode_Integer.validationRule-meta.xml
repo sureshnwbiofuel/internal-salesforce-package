@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_DoorCode_Integer</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+AND(
+    NOT(ISBLANK(Door_Code__c )),
+    OR(
+        NOT(ISNUMBER(Door_Code__c )),
+        FIND(&quot;.&quot;, Door_Code__c ) &gt; 0
+    )
+))</errorConditionFormula>
+    <errorMessage>Please ensure the Door Code Field contain only Numbers.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <assignments>
+        <name>Assign_Frequency_and_DueDate</name>
+        <label>Assign Frequency and DueDate</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Frequency_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>frequency</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Due_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>dueDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Assign_SN_Values</name>
+        <label>Assign SN Values</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Volume__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>volume</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Container_Size1__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>container1</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Monthly_Gallons__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>monthlyGallons</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Frequency_and_DueDate</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Custom_Error_COV_Needed</name>
+        <label>Custom Error COV Needed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>A Scheduled Delivery Date is required when &apos;Container Needed&apos; is checked.</errorMessage>
+            <fieldSelection>Scheduled_Delivery_Date__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Custom_Error_Message_Container_Delivered</name>
+        <label>Custom Error Message Container Delivered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>A Container Delivered Date is required when &apos;Container Delivered&apos; is checked.</errorMessage>
+            <fieldSelection>Container_Delivered_Date__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_Create_Update</name>
+        <label>Check Create/Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Check_UCO_Fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update</defaultConnectorLabel>
+        <rules>
+            <name>Create</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_SN_Values</targetReference>
+            </connector>
+            <label>Create</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_UCO_Validatons</name>
+        <label>Check UCO Validatons</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_Create_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Validations</defaultConnectorLabel>
+        <rules>
+            <name>COV_Needed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ucoValidationContainerNeeded</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Custom_Error_COV_Needed</targetReference>
+            </connector>
+            <label>COV Needed</label>
+        </rules>
+        <rules>
+            <name>COV_Delivered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ucoValidationDeliveryDate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Custom_Error_Message_Container_Delivered</targetReference>
+            </connector>
+            <label>COV Delivered</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_Check_UCO_Fields</name>
+        <label>Check UCO Fields Updated</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_UCO_Fields_Populated</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Fryers__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.UCO_No_Of_Gallons_Per_Fryer__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Oil_Change_Frequency_Days__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Container_Size1__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Container_Size2__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Container_Size3__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Assign_SN_Values</targetReference>
+            </connector>
+            <label>UCO Fields Updated</label>
+        </rules>
+    </decisions>
+    <description>Flows Runs only for UCO Services</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>container1</name>
+        <dataType>String</dataType>
+        <expression>IF (ISBLANK(TEXT({!$Record.Container_Size1__c})) , 
+IF( ISPICKVAL({!$Record.Indoor_Outdoor__c}, &quot;Indoor&quot;),
+    IF( {!monthlyGallons} &lt;= 42, &quot;42&quot;,
+    IF( {!monthlyGallons} &lt;= 50, &quot;50&quot;,
+    &quot;78&quot;)),
+    IF( ISPICKVAL({!$Record.Indoor_Outdoor__c}, &quot;Outdoor&quot;),
+        IF( {!monthlyGallons} &lt;=55, &quot;55&quot;,
+        IF( {!monthlyGallons} &lt;= 134, &quot;134&quot;,
+		IF( {!monthlyGallons} &lt;= 147.66, &quot;147.66&quot;,
+        IF( {!monthlyGallons} &lt;= 153, &quot;153&quot;,
+        IF( {!monthlyGallons} &lt;= 188, &quot;188&quot;,
+        IF( {!monthlyGallons} &lt;= 209, &quot;209&quot;,
+        IF( {!monthlyGallons} &lt;= 213.98, &quot;213.98&quot;,
+		IF( {!monthlyGallons} &lt;= 314, &quot;314&quot;,
+		&quot;431.92&quot;)))))))),
+        NULL
+    )
+) , TEXT({!$Record.Container_Size1__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>dailyFillRate</name>
+        <dataType>Number</dataType>
+        <expression>{!monthlyGallons}/30</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>dueDate</name>
+        <dataType>Date</dataType>
+        <expression>{!$Record.Last_Completed_Date__c} + {!frequency}</expression>
+    </formulas>
+    <formulas>
+        <name>frequency</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    OR(
+        ISBLANK({!$Record__Prior.Volume__c}),
+        {!volume} = 0,
+        ISBLANK({!volume})
+    ),
+    {!$Record.Frequency_Days__c},
+    {!$Record.Frequency_Days__c} * ({!volume} /  {!$Record__Prior.Volume__c}  )
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
+        <name>monthlyGallons</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+
+    AND(
+
+        NOT(ISBLANK({!$Record.Number_of_Fryers__c})),
+
+        NOT(ISBLANK({!$Record.UCO_No_Of_Gallons_Per_Fryer__c})),
+
+        NOT(ISBLANK({!$Record.Oil_Change_Frequency_Days__c})),
+
+        {!$Record.Oil_Change_Frequency_Days__c} &gt; 0
+
+    ),
+
+    ROUND(({!$Record.Number_of_Fryers__c} * {!$Record.UCO_No_Of_Gallons_Per_Fryer__c} * 30 / {!$Record.Oil_Change_Frequency_Days__c}), 0),
+
+    {!$Record.Monthly_Gallons__c}
+
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>ucoValidationContainerNeeded</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.UCO_Container_Needed__c}=True &amp;&amp; ISBLANK({!$Record.Scheduled_Delivery_Date__c})</expression>
+    </formulas>
+    <formulas>
+        <name>ucoValidationDeliveryDate</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.UCO_Container_Delivered__c}=True &amp;&amp; ISBLANK({!$Record.Container_Delivered_Date__c})</expression>
+    </formulas>
+    <formulas>
+        <description>Sum of Containers</description>
+        <name>volume</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+    {!$Record.RecordType.DeveloperName} = &quot;Used_Cooking_Oil&quot;,
+    (
+        IF(ISBLANK({!container1}), 0, VALUE(TRIM(LEFT({!container1}, FIND(&quot; &quot;, {!container1} &amp; &quot; &quot;) - 1))))
+        +
+        IF(ISBLANK(TEXT({!$Record.Container_Size2__c})), 0, VALUE(TRIM(LEFT(TEXT({!$Record.Container_Size2__c}), FIND(&quot; &quot;, TEXT({!$Record.Container_Size2__c}) &amp; &quot; &quot;) - 1))))
+        +
+        IF(ISBLANK(TEXT({!$Record.Container_Size3__c})), 0, VALUE(TRIM(LEFT(TEXT({!$Record.Container_Size3__c}), FIND(&quot; &quot;, TEXT({!$Record.Container_Size3__c}) &amp; &quot; &quot;) - 1))))
+    ),
+    0
+)</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Service Needed Before Save - UCO {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Service Needed Before Save UCO</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_UCO_Validatons</targetReference>
+        </connector>
+        <filterFormula>{!$Record.RecordType.DeveloperName}=&apos;Used_Cooking_Oil&apos;</filterFormula>
+        <object>Services_Needed__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

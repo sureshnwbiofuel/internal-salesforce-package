@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notification_Method__c</fullName>
+    <externalId>false</externalId>
+    <label>Notification Method</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>do_not_notify</fullName>
+                <default>false</default>
+                <label>Do Not Notify</label>
+            </value>
+            <value>
+                <fullName>notify_text</fullName>
+                <default>false</default>
+                <label>Notify Text</label>
+            </value>
+            <value>
+                <fullName>notify_email</fullName>
+                <default>false</default>
+                <label>Notify Email</label>
+            </value>
+            <value>
+                <fullName>notify_phone</fullName>
+                <default>false</default>
+                <label>Notify Phone</label>
+            </value>
+            <value>
+                <fullName>notify</fullName>
+                <default>false</default>
+                <label>Notify Both</label>
+            </value>
+            <value>
+                <fullName>email</fullName>
+                <default>false</default>
+                <label>CR: Email</label>
+            </value>
+            <value>
+                <fullName>text_message</fullName>
+                <default>false</default>
+                <label>CR: Text Message</label>
+            </value>
+            <value>
+                <fullName>phone</fullName>
+                <default>false</default>
+                <label>CR: Phone</label>
+            </value>
+            <value>
+                <fullName>both</fullName>
+                <default>false</default>
+                <label>CR: Both</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

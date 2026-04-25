@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FSE_Name__c</fullName>
+    <description>Food Service Establishment / Restaurant Name</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Leave this field blank if it is the same as the Account Name.</inlineHelpText>
+    <label>FSE Name</label>
+    <length>50</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

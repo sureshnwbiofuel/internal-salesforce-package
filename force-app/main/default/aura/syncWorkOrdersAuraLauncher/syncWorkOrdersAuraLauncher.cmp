@@ -1,0 +1,10 @@
+<aura:component implements="lightning:isUrlAddressable"
+                access="global">
+
+    <aura:handler name="closemodal"
+                  event="aura:applicationEvent"
+                  action="{!c.handleClose}" />
+
+    <c:syncWorkOrdersLauncher
+        onclosemodal="{!c.handleClose}" />
+</aura:component>

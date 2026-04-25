@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UCO_Bulk_Edit</fullName>
+    <columns>Volume__c</columns>
+    <columns>Frequency_Days__c</columns>
+    <columns>Monthly_Gallons__c</columns>
+    <columns>Order_Type__c</columns>
+    <columns>Account__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Services_Needed_Number_Display__c</columns>
+    <columns>Last_Completed_Date__c</columns>
+    <columns>Last_Collected_Gallons__c</columns>
+    <columns>Daily_Fill_Rate__c</columns>
+    <columns>Allowed_Days__c</columns>
+    <columns>Rebate__c</columns>
+    <columns>HazTrack_Sensor_ID__c</columns>
+    <columns>Rate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Services_Needed__c.Used_Cooking_Oil</value>
+    </filters>
+    <label>UCO Bulk Edit</label>
+</ListView>

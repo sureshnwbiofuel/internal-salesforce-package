@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bulk_Edit_UCO</fullName>
+    <columns>Allowed_Days__c</columns>
+    <columns>Account__c</columns>
+    <columns>Frequency_Days__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Volume__c</columns>
+    <columns>Monthly_Gallons__c</columns>
+    <columns>Last_Collected_Gallons__c</columns>
+    <columns>Current_Fill_Level__c</columns>
+    <columns>Last_Completed__c</columns>
+    <columns>UCO_Container_Delivered__c</columns>
+    <columns>Services_Needed_Number_Display__c</columns>
+    <columns>Daily_Fill_Rate__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Services_Needed__c.Used_Cooking_Oil</value>
+    </filters>
+    <filters>
+        <field>Due_Date__c</field>
+        <operation>lessThan</operation>
+        <value>4/25/2026</value>
+    </filters>
+    <filters>
+        <field>Due_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>4/16/2026</value>
+    </filters>
+    <label>UCO Routing</label>
+</ListView>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Full_Day_Check</fullName>
+    <active>true</active>
+    <description>If Full Day is true then Restricted Date Range To should be blank OR If Full Day is false then Restricted Date Range To should not be blank</description>
+    <errorConditionFormula>IF(AND(Full_Day__c,NOT(ISBLANK(Restricted_Date_Range_To__c))),true,IF(AND(NOT(Full_Day__c),ISBLANK(Restricted_Date_Range_To__c)),true,false))</errorConditionFormula>
+    <errorDisplayField>Full_Day__c</errorDisplayField>
+    <errorMessage>If Full Day is true then Restricted Date Range To should be blank / If Full Day is false then Restricted Date Range To should not be blank</errorMessage>
+</ValidationRule>

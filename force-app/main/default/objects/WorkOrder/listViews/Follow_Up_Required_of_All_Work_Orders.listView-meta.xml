@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_Up_Required_of_All_Work_Orders</fullName>
+    <columns>OptimoRoute_Last_Sync__c</columns>
+    <columns>Work_Order_Number_Display__c</columns>
+    <columns>Account</columns>
+    <columns>Optimo_Date__c</columns>
+    <columns>Status</columns>
+    <columns>Order_Date__c</columns>
+    <columns>Last_Completed_Date__c</columns>
+    <columns>Frequency_Days__c</columns>
+    <columns>Due_Date__c</columns>
+    <columns>Scheduling_Range__c</columns>
+    <columns>Group__c</columns>
+    <columns>Order_Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status</field>
+        <operation>notEqual</operation>
+        <value>Unscheduled</value>
+    </filters>
+    <filters>
+        <field>Scheduling_Range__c</field>
+        <operation>equals</operation>
+        <value>4/12/2026 To 4/18/2026</value>
+    </filters>
+    <label>Completed &amp; Scheduled WOs (Week)</label>
+</ListView>

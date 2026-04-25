@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <assignments>
+        <name>Assign_Values</name>
+        <label>Assign Values</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Due_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>dueDate</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_Create_Update</name>
+        <label>Check Create/Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update</defaultConnectorLabel>
+        <rules>
+            <name>Create</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Values</targetReference>
+            </connector>
+            <label>Create</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>dueDate</name>
+        <dataType>Date</dataType>
+        <expression>IF(
+    /* 1. Check if the record is New OR the Frequency has changed */
+    OR(
+        ISNEW(),
+        ISCHANGED({!$Record.Frequency_Days__c})
+    ),
+    /* 2. If true, check if we have a Last Completed Date to calculate from */
+    IF(
+        NOT(ISBLANK({!$Record.Last_Completed_Date__c})),
+        /* Calculation: Last Completed Date + Frequency Days */
+        {!$Record.Last_Completed_Date__c} + BLANKVALUE({!$Record.Frequency_Days__c}, 0),
+        /* If Last Completed is blank, keep the existing value of the date field */
+        {!$Record.Due_Date__c}
+    ),
+    /* 3. If neither condition 1 or 2 is met, leave the value alone */
+    {!$Record.Due_Date__c}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Service Needed Before Save Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Service Needed Before Save Record Triggered Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_Create_Update</targetReference>
+        </connector>
+        <object>Services_Needed__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

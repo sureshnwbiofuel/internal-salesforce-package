@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Fill_Level__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    OR(
+        ISPICKVAL(Status, &quot;Completed&quot;),
+        ISPICKVAL(Status, &quot;Rejected&quot;),
+        ISPICKVAL(Status, &quot;Failed&quot;)
+    ),
+    /* If Status is Completed/Rejected/Failed */
+    IF(
+        OR(
+            ISBLANK(Last_Completed_Date__c),
+            ISBLANK(Gallons_Per_Month__c),
+            ISBLANK(Optimo_Date__c)
+        ),
+        0,
+        MAX(0, (Gallons_Per_Month__c / 30) * (Optimo_Date__c - Last_Completed_Date__c))
+    ),
+    /* If Status is anything else (Draft, In Progress, etc.) */
+    IF(
+        OR(
+            ISBLANK(Last_Completed_Date__c),
+            ISBLANK(Gallons_Per_Month__c)
+        ),
+        0,
+        MAX(0, (Gallons_Per_Month__c / 30) * (TODAY() - Last_Completed_Date__c))
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Current Fill Level</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

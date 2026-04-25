@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Restrict Scheduling Dates</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Restrict Scheduling Dates</value>
+    </caseValues>
+    <layouts>
+        <layout>Restrict Scheduling Dates Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Full_Day_Check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>ToDate_Cannot_Be_Less_Than_From_Date</name>
+    </validationRules>
+</CustomObjectTranslation>

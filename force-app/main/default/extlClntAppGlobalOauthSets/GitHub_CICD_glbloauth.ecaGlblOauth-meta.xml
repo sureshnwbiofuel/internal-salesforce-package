@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+    <certificate>MIIDhzCCAm+gAwIBAgIUMUogfq7lUjR+BH7RJ9ZIFcNWzWYwDQYJKoZIhvcNAQEL
+BQAwUzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAk9SMRIwEAYDVQQKDAlOV0JJT0ZV
+RUwxIzAhBgkqhkiG9w0BCQEWFHN1cmVzaEBud2Jpb2Z1ZWwuY29tMB4XDTI2MDQy
+NDExMDMzNFoXDTI3MDQyNDExMDMzNFowUzELMAkGA1UEBhMCVVMxCzAJBgNVBAgM
+Ak9SMRIwEAYDVQQKDAlOV0JJT0ZVRUwxIzAhBgkqhkiG9w0BCQEWFHN1cmVzaEBu
+d2Jpb2Z1ZWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzU6C
+RCkOX8claN21sEmgYzonBTjCnRmln9YHdl8hh52bSP/H5kP4gWU4PPDhmHa74PC0
+xak7SgYnCdxdjCduB8pvvm913SVpgRIdj2Vq1A4fVnxdIVoKEAUgXVGU7W/0v0xi
+IPmeCA00dpY2ZZoYsOmeQNdH7kIVxcPsomcHen7MUSYyCj+N03pfpG+MIE7x+44S
+SPNGQS4OI7jk8DU2WfahcAgckdLz398gKcm4g+37I8NmAII7M61VwjjSUES0+gzA
+Qb3xc18Mmr9DHBzn6TagldSeE2g4M50YO/ULnz61NBq52m1SkcrEMpUrFhSQd6W5
+CFb4g7fXBB2Ne/jwdQIDAQABo1MwUTAdBgNVHQ4EFgQUM2YlrvHDwjnogB4+dJIw
+H6ByW2YwHwYDVR0jBBgwFoAUM2YlrvHDwjnogB4+dJIwH6ByW2YwDwYDVR0TAQH/
+BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAK+84j1sMusnukUJCh3RKXp4T8DNW
+ls2CamR3BOr5AK9b6/AEpTpKCTStTzOyVDvhUvNjE/64E/RAZRLjr4GeJBaCj4tG
+MSvFI2QYzMoxF2evaLHcDgsaMVlyfQKUS+CKgSAtoSnvHAsI/LCydaB8TTkXhG/A
+yreCAnjMLknlvu06D9YhahdUBypBhnLXsNUAuiajpT15P2CAfPwc4X+sKxeHs96a
+T3HupQRdS9cScdybvESW+Ah4AY5TgveNXiiGdoksTmFuMhdC+WsTWzvPHhGVmU7i
+j3V4FmN7rqCmVlEjlw28LZNAsWHNueK6szwDzY150cIKEvHXqMR67kN/1A==</certificate>
+    <consumerKey>3MVG9dG9pUXcsrJB_0qRF8hvQpPgWIuH2uauL88.50ZsAwzKJakkFsyneiGZu.jA628jhBy5rBu1LynKdSh9p</consumerKey>
+    <externalClientApplication>GitHub_CICD</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isConsumerSecretOptional>false</isConsumerSecretOptional>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isPkceRequired>true</isPkceRequired>
+    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+    <label>GitHub_CICD_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

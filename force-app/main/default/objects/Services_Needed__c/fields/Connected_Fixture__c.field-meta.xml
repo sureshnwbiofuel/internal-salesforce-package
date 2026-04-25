@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Connected_Fixture__c</fullName>
+    <externalId>false</externalId>
+    <label>Connected Fixture</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All</fullName>
+                <default>false</default>
+                <label>All</label>
+            </value>
+            <value>
+                <fullName>Wok</fullName>
+                <default>false</default>
+                <label>Wok</label>
+            </value>
+            <value>
+                <fullName>Dish Washer</fullName>
+                <default>false</default>
+                <label>Dish Washer</label>
+            </value>
+            <value>
+                <fullName>Mop</fullName>
+                <default>false</default>
+                <label>Mop</label>
+            </value>
+            <value>
+                <fullName>multi-comp sink</fullName>
+                <default>false</default>
+                <label>multi-comp sink</label>
+            </value>
+            <value>
+                <fullName>single-comp sink</fullName>
+                <default>false</default>
+                <label>single-comp sink</label>
+            </value>
+            <value>
+                <fullName>Spray Sink</fullName>
+                <default>false</default>
+                <label>Spray Sink</label>
+            </value>
+            <value>
+                <fullName>Dish Sink</fullName>
+                <default>false</default>
+                <label>Dish Sink</label>
+            </value>
+            <value>
+                <fullName>Prep Sink</fullName>
+                <default>false</default>
+                <label>Prep Sink</label>
+            </value>
+            <value>
+                <fullName>3 comp sink</fullName>
+                <default>false</default>
+                <label>3 comp sink</label>
+            </value>
+            <value>
+                <fullName>Multi Comp Sink</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Multi Comp Sink</label>
+            </value>
+            <value>
+                <fullName>Single Comp Sink</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Single Comp Sink</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

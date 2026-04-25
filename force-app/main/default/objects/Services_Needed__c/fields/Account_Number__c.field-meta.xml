@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Number__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(RecordType.Name,
+    &apos;Grease Trap&apos;, &apos;BGT&apos;,
+    &apos;Used Cooking Oil&apos;, &apos;UCO&apos;,
+    &apos;Drain Cleaning&apos;, &apos;HYD&apos;,
+    &apos;Interceptor&apos;, &apos;INT&apos;, 
+     &apos;WR&apos;
+) + &apos;-&apos; + Lead__r.Account_Number__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Account Number</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

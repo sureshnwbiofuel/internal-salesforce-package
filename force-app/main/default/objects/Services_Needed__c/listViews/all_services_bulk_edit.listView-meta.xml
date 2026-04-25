@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>all_services_bulk_edit</fullName>
+    <columns>Account__c</columns>
+    <columns>Recurring__c</columns>
+    <columns>Vehicle_Features__c</columns>
+    <columns>Volume__c</columns>
+    <columns>Rate__c</columns>
+    <columns>Communication_Preference__c</columns>
+    <columns>Door_Code__c</columns>
+    <columns>Door_Key__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Services_Needed__c.Used_Cooking_Oil</value>
+    </filters>
+    <label>All Services Bulk Edit</label>
+</ListView>

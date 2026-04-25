@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>suresh@nwbiofuel.com</contactEmail>
+    <label>DevOps Center</label>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <certificate>MIIDSjCCAjICCQCH4b2vMrBFuTANBgkqhkiG9w0BAQsFADBnMQswCQYDVQQGEwJ1czEOMAwGA1UECAwFdGV4YXMxDzANBgNVBAcMBmRhbGxhczESMBAGA1UECgwJTndCaW9GdWVsMSMwIQYJKoZIhvcNAQkBFhRzdXJlc2hAbndiaW9mdWVsLmNvbTAeFw0yNjA0MjMxMzMxNTVaFw0zNjA0MjAxMzMxNTVaMGcxCzAJBgNVBAYTAnVzMQ4wDAYDVQQIDAV0ZXhhczEPMA0GA1UEBwwGZGFsbGFzMRIwEAYDVQQKDAlOd0Jpb0Z1ZWwxIzAhBgkqhkiG9w0BCQEWFHN1cmVzaEBud2Jpb2Z1ZWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7WwKJejUHQcNoiaC/AJapm5qu6RyRJw7fU86g+rNKqqTV749aynLvv3a9U0ghJ20JYc8HS7rrf8smUVJ5be2DTOCQ0CQeF42mAJsz0p2FuWC6Tv68yuESEEel7mzDl9q6nyhI/jhTxikg8U1XbvoSRsYrRPmUPOvX4YbxKCt6lE90Y4ubsfFhrpL1LKEGVS2b6VHSwvUdjtPWEwi6GFlpXjG0ELsmpWBOSlUHVf/uqV0as4nNr0ow16byXfc+2xtJmdKGdnxtvxNrLCFfpmJdZL7a3j39Q46WR6nIwXm88riWAVIxchKbFG4ka2mYkZButy+KwNy+H9SQCNRlJGCGwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQB3mfmcnrTUwQQELYlUzIfD/yNUgTEVw1U2wC1a5qsJ+laqxwwvywijz9NuUd4uYFeNpIED0RcT+lSvn1+dTjFY+ZHHqy2y9lCFfcoZJOCbCrVLXPosF4HHTX9mFlXijvcg8eXsJ9lowXQBMlLStkba9JhPOgfFBvEgXiBXAlebKw8lz0pMbm/qdXyCB568DHnQS6Bs5nNNAZye7bMFWYkZThU8uf5ui3sP5VeukHbdJ4kgYvPsCFZW/9qO+CAfZrf3t28pa03ncpbK+S6VYe1KLGuTXKADvx7BZN31MfoUeT7Y9G4t0cVtuVPBIgI0eGcIGEAG/AQkjQsHKtdhl82H</certificate>
+        <consumerKey>3MVG9dG9pUXcsrJANLhayvGIEIrGyTT_awxMiEXJplkf.J2MoMu2sWQyaiZmAcZKNPtO9JOZzR0_Nf_3inhDs</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>Full</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>sf_devops_NamedCredentials</permissionSetName>
+    <profileName>System Administrator</profileName>
+    <startUrl>/sf_devops/DevOpsCenter.app</startUrl>
+</ConnectedApp>

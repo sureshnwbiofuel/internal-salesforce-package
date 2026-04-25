@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ToDate_Cannot_Be_Less_Than_From_Date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Restricted_Date_Range_To__c &lt;=  Restricted_Date_Range_From__c</errorConditionFormula>
+    <errorMessage>&apos;Restricted Date Range To&apos; Cannot be Equal To or Less Than &apos;Restricted Date Range From&apos;</errorMessage>
+</ValidationRule>
