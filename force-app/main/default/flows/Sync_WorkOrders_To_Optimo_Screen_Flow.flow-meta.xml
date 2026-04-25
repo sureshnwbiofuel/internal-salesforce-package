@@ -9,6 +9,7 @@
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>OptimoRouteBatchClass</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>65.0</apiVersion>
     <assignments>
@@ -157,7 +158,7 @@
         <connector>
             <targetReference>Check_WorkOrders_Exist</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND 2 AND ( NOT(3) OR (3 AND NOT(4)) )</filterLogic>
         <filters>
             <field>Status</field>
             <operator>EqualTo</operator>
@@ -170,6 +171,20 @@
             <operator>GreaterThanOrEqualTo</operator>
             <value>
                 <elementReference>lastBatchExecuteDateTime</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Has_PO__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PO_Number__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
