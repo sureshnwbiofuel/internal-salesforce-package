@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Failure_Reason__c</fullName>
+    <label>Failure Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cannot Find Grease Trap</fullName>
+                <default>false</default>
+                <label>Cannot Find Grease Trap</label>
+            </value>
+            <value>
+                <fullName>Cannot Find UCO Container</fullName>
+                <default>false</default>
+                <label>Cannot Find UCO Container</label>
+            </value>
+            <value>
+                <fullName>Customer No-Show</fullName>
+                <default>false</default>
+                <label>Customer No-Show</label>
+            </value>
+            <value>
+                <fullName>Door Code Not Working</fullName>
+                <default>false</default>
+                <label>Door Code Not Working</label>
+            </value>
+            <value>
+                <fullName>Door Key Not Working</fullName>
+                <default>false</default>
+                <label>Door Key Not Working</label>
+            </value>
+            <value>
+                <fullName>Driver Missing Tools</fullName>
+                <default>false</default>
+                <label>Driver Missing Tools</label>
+            </value>
+            <value>
+                <fullName>Forgot Door Key</fullName>
+                <default>false</default>
+                <label>Forgot Door Key</label>
+            </value>
+            <value>
+                <fullName>Lock Box Code Not Working</fullName>
+                <default>false</default>
+                <label>Lock Box Code Not Working</label>
+            </value>
+            <value>
+                <fullName>Lox Box Missing</fullName>
+                <default>false</default>
+                <label>Lox Box Missing</label>
+            </value>
+            <value>
+                <fullName>Outside service window</fullName>
+                <default>false</default>
+                <label>Outside service window</label>
+            </value>
+            <value>
+                <fullName>UCO Container Empty</fullName>
+                <default>false</default>
+                <label>UCO Container Empty</label>
+            </value>
+            <value>
+                <fullName>Behind Schedule</fullName>
+                <default>false</default>
+                <label>Behind Schedule</label>
+            </value>
+            <value>
+                <fullName>Vehicle Not Working</fullName>
+                <default>false</default>
+                <label>Vehicle Not Working</label>
+            </value>
+            <value>
+                <fullName>CRS: Wrong Day</fullName>
+                <default>false</default>
+                <label>CRS: Wrong Day</label>
+            </value>
+            <value>
+                <fullName>CRS: Outside Service Window</fullName>
+                <default>false</default>
+                <label>CRS: Outside Service Window</label>
+            </value>
+            <value>
+                <fullName>CRS: Too Busy</fullName>
+                <default>false</default>
+                <label>CRS: Too Busy</label>
+            </value>
+            <value>
+                <fullName>CRS: Does Not Want Service</fullName>
+                <default>false</default>
+                <label>CRS: Does Not Want Service</label>
+            </value>
+            <value>
+                <fullName>CRS: Access Time/Days Have Changed</fullName>
+                <default>false</default>
+                <label>CRS: Access Time/Days Have Changed</label>
+            </value>
+            <value>
+                <fullName>Incorrect Daily Availability</fullName>
+                <default>false</default>
+                <label>Incorrect Daily Availability</label>
+            </value>
+            <value>
+                <fullName>Door Key Missing</fullName>
+                <default>false</default>
+                <label>Door Key Missing</label>
+            </value>
+            <value>
+                <fullName>GT Not Accessible</fullName>
+                <default>false</default>
+                <label>GT Not Accessible</label>
+            </value>
+            <value>
+                <fullName>Customer Refused Service</fullName>
+                <default>false</default>
+                <label>Customer Refused Service</label>
+            </value>
+            <value>
+                <fullName>Missing Correct Equipment</fullName>
+                <default>false</default>
+                <label>Missing Correct Equipment</label>
+            </value>
+            <value>
+                <fullName>Lock/Code Changed</fullName>
+                <default>false</default>
+                <label>Lock/Code Changed</label>
+            </value>
+            <value>
+                <fullName>Incorrect Vehicle</fullName>
+                <default>false</default>
+                <label>Incorrect Vehicle</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Behind Schedule 2</fullName>
+                <default>false</default>
+                <label>Behind Schedule 2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
