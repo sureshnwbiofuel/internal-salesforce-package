@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Invoice_Status__c</fullName>
-    <label>Invoice Status NOT IN USE</label>
+    <fullName>Payment_Term__c</fullName>
+    <description>Used to associate the Account with specific QuickBooks Terms (e.g., Net 30, Net 7)</description>
+    <label>Payment Term</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Not Sent</fullName>
+                <fullName>Due on receipt</fullName>
                 <default>false</default>
-                <label>Not Sent</label>
+                <label>Due on receipt</label>
             </value>
             <value>
-                <fullName>Sent</fullName>
+                <fullName>Net 7</fullName>
                 <default>false</default>
-                <label>Sent</label>
+                <label>Net 7</label>
             </value>
             <value>
-                <fullName>Viewed</fullName>
+                <fullName>Net 10</fullName>
                 <default>false</default>
-                <label>Viewed</label>
+                <label>Net 10</label>
             </value>
             <value>
-                <fullName>Open</fullName>
+                <fullName>Net 15</fullName>
                 <default>false</default>
-                <label>Open</label>
+                <label>Net 15</label>
             </value>
             <value>
-                <fullName>Overdue</fullName>
+                <fullName>Net 30</fullName>
                 <default>false</default>
-                <label>Overdue</label>
+                <label>Net 30</label>
             </value>
             <value>
-                <fullName>Partially Paid</fullName>
+                <fullName>Net 45</fullName>
                 <default>false</default>
-                <label>Partially Paid</label>
+                <label>Net 45</label>
             </value>
             <value>
-                <fullName>Paid</fullName>
+                <fullName>Net 60</fullName>
                 <default>false</default>
-                <label>Paid</label>
+                <label>Net 60</label>
             </value>
         </valueSetDefinition>
     </valueSet>

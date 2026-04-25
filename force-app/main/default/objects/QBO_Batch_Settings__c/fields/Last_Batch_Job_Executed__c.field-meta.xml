@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Batch_Job_Executed__c</fullName>
+    <description>The timestamp of when the last QBO batch successfully started. Used to ensure data continuity between runs.</description>
+    <label>Last Batch Job Executed</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>
