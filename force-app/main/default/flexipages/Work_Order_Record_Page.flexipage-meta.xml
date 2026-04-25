@@ -15,9 +15,6 @@
                         <valueListItems>
                             <value>ChangeOwnerOne</value>
                         </valueListItems>
-                        <valueListItems>
-                            <value>WorkOrder.Sync_WorkOrders</value>
-                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>

@@ -64,7 +64,6 @@
     </types>
     <types>
         <members>Account-Account Layout</members>
-        <members>Integration_Mapping__c-Integration Mapping Layout</members>
         <members>Invoice__c-Invoice Layout</members>
         <members>Services_Needed__c-BGT Service Needed Layout</members>
         <members>Services_Needed__c-HYD Service Needed Layout</members>
