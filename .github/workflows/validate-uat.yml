@@ -1,11 +1,19 @@
-name: Validate PR to UAT
+name: Manual Deploy to UAT
 
 on:
   pull_request:
     branches: [uat]
+  workflow_dispatch:
+    inputs:
+      validate_only:
+        description: "Run validation only (no deployment)"
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   validate:
+    if: (github.event_name == 'pull_request' && github.base_ref == 'uat' && github.head_ref == 'dev') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/uat')
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +32,8 @@ jobs:
             --instance-url https://test.salesforce.com \
             --alias uat-org
 
-      - name: Deploy via Manifest (Check-Only)
+      - name: Validate via Manifest (Check-Only)
+        if: ${{ github.event_name == 'pull_request' || inputs.validate_only }}
         run: |
           sf project deploy start \
             --manifest manifest/package.xml \
@@ -33,3 +42,13 @@ jobs:
             --ignore-conflicts \
             --wait 60 \
             --dry-run
+
+      - name: Deploy via Manifest
+        if: ${{ github.event_name == 'workflow_dispatch' && !inputs.validate_only }}
+        run: |
+          sf project deploy start \
+            --manifest manifest/package.xml \
+            --target-org uat-org \
+            --test-level RunLocalTests \
+            --ignore-conflicts \
+            --wait 60
