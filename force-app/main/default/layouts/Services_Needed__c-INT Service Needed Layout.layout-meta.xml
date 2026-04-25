@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -21,11 +20,11 @@
                 <field>Order_Type__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Frequency_Days__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Due_Date__c</field>
             </layoutItems>
             <layoutItems>
@@ -33,7 +32,7 @@
                 <field>Previous_Provider__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Service_Notes__c</field>
             </layoutItems>
             <layoutItems>
@@ -43,10 +42,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Services_Needed_Number_Display__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Has_PO__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -63,7 +58,7 @@
                 <field>Priority__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Duration_In_Mins__c</field>
             </layoutItems>
             <layoutItems>
@@ -71,7 +66,7 @@
                 <field>Connected_Fixture__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Rate__c</field>
             </layoutItems>
             <layoutItems>
@@ -88,7 +83,7 @@
         <label>GRD Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>GRD_Location_Name__c</field>
             </layoutItems>
             <layoutItems>
@@ -111,7 +106,7 @@
         <label>Time Window Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Primary_Time_Window_From__c</field>
             </layoutItems>
             <layoutItems>
@@ -121,7 +116,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Readonly</behavior>
                 <field>Primary_Time_Window_To__c</field>
             </layoutItems>
             <layoutItems>
@@ -152,7 +147,7 @@
                 <field>Door_Code__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Allowed_Days__c</field>
             </layoutItems>
         </layoutColumns>
@@ -165,21 +160,21 @@
         <label>Contact Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Notification_Email__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Notification_Phone_Number__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Communication_Preference__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Notification_Method__c</field>
             </layoutItems>
         </layoutColumns>
@@ -198,7 +193,7 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Vehicle_Features__c</field>
             </layoutItems>
         </layoutColumns>
@@ -211,7 +206,7 @@
         <label>Follow-Up Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>BGT_Control_Authority__c</field>
             </layoutItems>
         </layoutColumns>
@@ -371,6 +366,15 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <fields>Work_Order_Number_Display__c</fields>
+        <fields>Status</fields>
+        <fields>Frequency_Days__c</fields>
+        <fields>Due_Date__c</fields>
+        <fields>Order_Date__c</fields>
+        <fields>Account</fields>
+        <relatedList>WorkOrder.Services_Needed__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <relatedList>Restrict_Scheduling_Dates__c.Services_Needed__c</relatedList>
     </relatedLists>
@@ -380,7 +384,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hWI000003FUiP</masterLabel>
+        <masterLabel>00hcv000006d2Xx</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

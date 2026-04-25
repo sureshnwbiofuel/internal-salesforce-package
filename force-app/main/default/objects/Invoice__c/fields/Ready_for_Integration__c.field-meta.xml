@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Ready_for_Integration__c</fullName>
-    <defaultValue>false</defaultValue>
-    <description>Integration Gatekeeper. When checked (True), signals to the Scheduled Batch that all related Work Orders for the Account/Date are completed and the record is ready for QuickBooks sync.</description>
-    <label>Ready for Integration</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>

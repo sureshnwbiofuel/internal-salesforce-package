@@ -10,7 +10,6 @@
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>OptimoRouteBatchClass</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>sendNotificationForOriginalWO</name>
@@ -61,7 +60,6 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>64.0</apiVersion>
     <assignments>
@@ -89,7 +87,7 @@
             <assignToReference>newWORecord.Status</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>varMappedStatus</elementReference>
+                <stringValue>Not Ready</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -132,27 +130,6 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>originalWORecord.Opportunity__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.Has_PO__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.Has_PO__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.PO_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.PO_Number__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.Action_Required__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.Action_Required__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -214,20 +191,6 @@
                 <elementReference>originalWORecord.Opportunity__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.Has_PO__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.Has_PO__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.PO_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.PO_Number__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Get_User_Emails</targetReference>
         </connector>
@@ -285,20 +248,6 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>originalWORecord.Opportunity__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.Has_PO__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>originalWORecord.Has_PO__c</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>newWORecord.PO_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue></stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -433,15 +382,6 @@
         <expression>{!forBaseURL}&amp;{!originalWORecord.Id}</expression>
     </formulas>
     <formulas>
-        <name>mailBodyFormula</name>
-        <dataType>String</dataType>
-        <expression>IF(
-    ISPICKVAL({!originalWORecord.Status}, &quot;Failed&quot;),
-    TEXT({!originalWORecord.Failure_Reason__c}) &amp; &quot; : &quot; &amp; TEXT({!originalWORecord.Status_Category_OR__c}) &amp; &quot;, Action Required : &quot; &amp; BLANKVALUE(TEXT({!originalWORecord.Action_Required__c}), &quot;None&quot;),
-    null
-)</expression>
-    </formulas>
-    <formulas>
         <name>newDueDate</name>
         <dataType>Date</dataType>
         <expression>{!originalWORecord.Optimo_Date__c} + {!originalWORecord.Services_Needed__r.Frequency_Days__c}</expression>
@@ -573,7 +513,7 @@
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Hello Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification to inform you that Work Order # &lt;a href=&quot;{!forLinkWorkOrder}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!serviceNeededRecordType}-{!originalWORecord.WorkOrderNumber}&lt;/strong&gt;&lt;/a&gt; for &lt;a href=&quot;{!forLinkAccount}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!originalWORecord.Account.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;was marked as &lt;strong&gt;{!originalWORecord.Status}&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Additional details:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!mailBodyFormula}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Notes captured:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!originalWORecord.Driver_Notes__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the record and take any necessary next steps.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you,&lt;/p&gt;&lt;p&gt;Salesforce Admin&lt;/p&gt;</text>
+        <text>&lt;p&gt;Hello Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification to inform you that Work Order # &lt;a href=&quot;{!forLinkWorkOrder}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!serviceNeededRecordType}-{!originalWORecord.WorkOrderNumber}&lt;/strong&gt;&lt;/a&gt; for &lt;a href=&quot;{!forLinkAccount}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!originalWORecord.Account.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;was marked as &lt;strong&gt;{!originalWORecord.Status}&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Notes captured:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!originalWORecord.Driver_Notes__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the record and take any necessary next steps.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you,&lt;/p&gt;&lt;p&gt;Salesforce Admin&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>emailSubject</name>
@@ -607,13 +547,6 @@
     </variables>
     <variables>
         <name>status</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>true</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>varMappedStatus</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -30,10 +31,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Services_Needed_Number_Display__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Has_PO__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -312,6 +309,15 @@
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
+        <fields>Work_Order_Number_Display__c</fields>
+        <fields>Status</fields>
+        <fields>Frequency_Days__c</fields>
+        <fields>Due_Date__c</fields>
+        <fields>Order_Date__c</fields>
+        <fields>Account</fields>
+        <relatedList>WorkOrder.Services_Needed__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <fields>NAME</fields>
         <relatedList>Restrict_Scheduling_Dates__c.Services_Needed__c</relatedList>
     </relatedLists>
@@ -321,7 +327,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hWI000001eEN3</masterLabel>
+        <masterLabel>00hcv000006d2kr</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

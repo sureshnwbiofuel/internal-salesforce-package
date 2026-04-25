@@ -55,13 +55,6 @@
                 <elementReference>Service_Needed_Records.Due_Date__c</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>createWorkOrder.Has_PO__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Service_Needed_Records.Has_PO__c</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Assign_WO_To_List</targetReference>
         </connector>
