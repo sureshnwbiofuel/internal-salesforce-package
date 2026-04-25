@@ -32,6 +32,8 @@
         <members>WorkOrder.Invoice_Status__c</members>
         <members>Account.Group__c</members>
         <members>Services_Needed__c.Employee_s_Arrive_At__c</members>
+        <members>Services_Needed__c.Opens_At__c</members>
+        <members>Services_Needed__c.Closes_At__c</members>
         <name>CustomField</name>
     </types>
     <types>
