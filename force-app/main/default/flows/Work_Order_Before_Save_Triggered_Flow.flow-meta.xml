@@ -243,6 +243,13 @@
                 <elementReference>Get_WorkOrder_Status_Mapping.Action_Required__c</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Failure_Action_Assigned_To__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_WorkOrder_Status_Mapping.Action_Assigned_To__c</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Check_Status</targetReference>
         </connector>

@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <!--types>
-        <members>APICallOutsClass</members>
-        <members>IntegrationResponseHandler</members>
-        <members>QBO_InvoiceBatch</members>
-        <members>QBO_InvoiceHelper</members>
-        <members>QBO_InvoiceRequestResponseWrapperTest</members>
-        <members>QBO_InvoiceRequestWrapper</members>
-        <members>QBO_InvoiceResponseWrapper</members>
-        <members>QBO_Selector</members>
-        <name>ApexClass</name>
-    </types-->
     <types>
-        <members>Account.Payment_Term__c</members>
-        <members>Integration_Logs__c.Response_Body__c</members>
-        <members>Integration_Logs_Junction__c.Invoice__c</members>
-        <members>Services_Needed__c.Has_PO__c</members>
-        <members>Work_Order_Status_Mapping__mdt.Action_Required__c</members>
-        <members>Work_Order_Status_Mapping__mdt.Active__c</members>
-        <members>Work_Order_Status_Mapping__mdt.Failure_Reason__c</members>
-        <members>Work_Order_Status_Mapping__mdt.New_WO_Status__c</members>
-        <members>Work_Order_Status_Mapping__mdt.Status_Category__c</members>
-        <members>WorkOrder.Action_Required__c</members>
-        <members>WorkOrder.Failure_Reason__c</members>
-        <members>WorkOrder.Has_PO__c</members>
-        <members>WorkOrder.Last_Optimo_Sync__c</members>
-        <members>WorkOrder.PO_Number__c</members>
         <members>WorkOrder.Status_Category_OR__c</members>
-        <members>WorkOrder.Invoice__c</members>
-        <members>WorkOrder.Invoice_Id__c</members>
-        <members>WorkOrder.Invoice_Status__c</members>
-        <members>Account.Group__c</members>
-        <members>Services_Needed__c.Employee_s_Arrive_At__c</members>
-        <members>Services_Needed__c.Opens_At__c</members>
-        <members>Services_Needed__c.Closes_At__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -41,44 +9,17 @@
         <name>CustomMetadata</name>
     </types>
     <types>
-        <members>Invoice__c</members>
-        <members>QBO_Batch_Settings__c</members>
         <members>Work_Order_Status_Mapping__mdt</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Invoice__c</members>
-        <name>CustomTab</name>
-    </types>
-    <types>
-        <members>Account_Record_Page1</members>
-        <members>Work_Order_Record_Page</members>
-        <name>FlexiPage</name>
-    </types>
-    <types>
         <members>Create_Recurring_WorkOrder</members>
-        <members>Create_Update_Invoice_and_WorkOrder</members>
-        <members>Sync_WorkOrders_To_Optimo_Screen_Flow</members>
-        <members>Update_WorkOrder_Record_Triggered_Flow</members>
         <members>Work_Order_Before_Save_Triggered_Flow</members>
-        <members>WorkOrderCreation</members>
         <name>Flow</name>
     </types>
     <types>
-        <members>Account-Account Layout</members>
-        <members>Invoice__c-Invoice Layout</members>
-        <members>Services_Needed__c-BGT Service Needed Layout</members>
-        <members>Services_Needed__c-HYD Service Needed Layout</members>
-        <members>Services_Needed__c-INT Service Needed Layout</members>
-        <members>Services_Needed__c-UCO Service Needed Layout</members>
-        <members>Services_Needed__c-Waste Run Service Needed Layout</members>
-        <members>WorkOrder-Work Order Layout</members>
+        <members>Work_Order_Status_Mapping__mdt-Work Order Status Mapping Layout</members>
         <name>Layout</name>
-    </types>
-    <types>
-        <members>Services_Needed__c.SetPOFalseForUCO</members>
-        <members>WorkOrder.Require_Has_PO_Checkbox_PO_Number_Exists</members>
-        <name>ValidationRule</name>
     </types>
     <version>65.0</version>
 </Package>

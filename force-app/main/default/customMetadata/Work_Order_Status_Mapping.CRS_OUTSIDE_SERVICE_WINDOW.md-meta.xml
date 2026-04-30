@@ -3,6 +3,10 @@
     <label>CRS: Outside Service Window</label>
     <protected>false</protected>
     <values>
+        <field>Action_Assigned_To__c</field>
+        <value xsi:type="xsd:string">Salesfoce Automation</value>
+    </values>
+    <values>
         <field>Action_Required__c</field>
         <value xsi:type="xsd:string">None</value>
     </values>
