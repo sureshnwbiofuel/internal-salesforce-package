@@ -10,6 +10,7 @@
         <actionType>apex</actionType>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <nameSegment>OptimoRouteBatchClass</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>sendNotificationForOriginalWO</name>
@@ -24,11 +25,16 @@
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>recipientAddresses</name>
-            <value/>
+            <value>
+                <collectionElements>
+                    <elementReference>emailIds</elementReference>
+                </collectionElements>
+            </value>
         </inputParameters>
         <inputParameters>
             <name>senderType</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>CurrentUser</stringValue>
             </value>
         </inputParameters>
@@ -50,6 +56,7 @@
         <inputParameters>
             <name>emailBody</name>
             <value>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
                 <stringValue>&lt;p&gt;{!emailBody}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</stringValue>
             </value>
         </inputParameters>
@@ -60,8 +67,11 @@
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>2.0.1</versionString>
     </actionCalls>
     <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_Email_Ids</name>
         <label>Assign Email Ids</label>
