@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_SN_Field_Values</name>
         <label>Assign SN Field Values</label>
@@ -241,6 +242,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>Get_WorkOrder_Status_Mapping.Action_Required__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Failure_Action_Assigned_To__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_WorkOrder_Status_Mapping.Action_Assigned_To__c</elementReference>
             </value>
         </assignmentItems>
         <connector>

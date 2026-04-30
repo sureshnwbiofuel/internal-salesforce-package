@@ -441,6 +441,15 @@
         <expression>{!forBaseURL}&amp;{!originalWORecord.Id}</expression>
     </formulas>
     <formulas>
+        <name>mailBodyActionAssigned</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    ISPICKVAL({!originalWORecord.Status}, &quot;Failed&quot;),
+    {!originalWORecord.Failure_Action_Assigned_To__c},
+    null
+)</expression>
+    </formulas>
+    <formulas>
         <name>mailBodyFormula</name>
         <dataType>String</dataType>
         <expression>IF(
@@ -581,7 +590,7 @@
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;Hello Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification to inform you that Work Order # &lt;a href=&quot;{!forLinkWorkOrder}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!serviceNeededRecordType}-{!originalWORecord.WorkOrderNumber}&lt;/strong&gt;&lt;/a&gt; for &lt;a href=&quot;{!forLinkAccount}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!originalWORecord.Account.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;was marked as &lt;strong&gt;{!originalWORecord.Status}&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Additional details:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!mailBodyFormula}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Notes captured:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!originalWORecord.Driver_Notes__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the record and take any necessary next steps.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you,&lt;/p&gt;&lt;p&gt;Salesforce Admin&lt;/p&gt;</text>
+        <text>&lt;p&gt;Hello Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is an automated notification to inform you that Work Order # &lt;a href=&quot;{!forLinkWorkOrder}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!serviceNeededRecordType}-{!originalWORecord.WorkOrderNumber}&lt;/strong&gt;&lt;/a&gt; for &lt;a href=&quot;{!forLinkAccount}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!originalWORecord.Account.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;was marked as &lt;strong&gt;{!originalWORecord.Status}&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Additional details:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!mailBodyFormula}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Action Assigned To:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!mailBodyActionAssigned}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Notes captured:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!originalWORecord.Driver_Notes__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please review the record and take any necessary next steps.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you,&lt;/p&gt;&lt;p&gt;Salesforce Admin&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>emailSubject</name>

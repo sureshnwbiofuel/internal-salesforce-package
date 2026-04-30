@@ -6,6 +6,7 @@
     <columns>New_WO_Status__c</columns>
     <columns>Action_Required__c</columns>
     <columns>Active__c</columns>
+    <columns>Action_Assigned_To__c</columns>
     <filterScope>Everything</filterScope>
     <label>MyView</label>
 </ListView>
