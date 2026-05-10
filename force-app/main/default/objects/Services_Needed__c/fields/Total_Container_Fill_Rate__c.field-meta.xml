@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Container_Fill_Rate__c</fullName>
+    <description>Overall fill rate percentage across all site containers.</description>
+    <externalId>false</externalId>
+    <formula>IF(Total_Container_Capacity__c &gt; 0, Total_Current_Container_Level__c / Total_Container_Capacity__c, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Container Fill Rate</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>
