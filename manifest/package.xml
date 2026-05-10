@@ -1,25 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>WorkOrder.Failure_Action_Assigned_To__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomMetadata</name>
-    </types>
-    <types>
-        <members>Work_Order_Status_Mapping__mdt</members>
+        <members>Container__c</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Create_Recurring_WorkOrder</members>
+        <members>Container__c.Account__c</members>
+        <members>Container__c.Capacity_Left_Volume__c</members>
+        <members>Container__c.Container_Model_Name__c</members>
+        <members>Container__c.Current_Fill_Rate__c</members>
+        <members>Container__c.Current_Volume__c</members>
+        <members>Container__c.Haztrack_ID__c</members>
+        <members>Container__c.Last_Recorded__c</members>
+        <members>Container__c.Locked__c</members>
+        <members>Container__c.Received_Customer_Name__c</members>
+        <members>Container__c.Received_QBO_ID__c</members>
+        <members>Container__c.Received_SN_Number__c</members>
+        <members>Container__c.Sensor_Name__c</members>
+        <members>Container__c.Sensor_Serial_Number__c</members>
+        <members>Container__c.Sensor_UID__c</members>
+        <members>Container__c.Services_Needed__c</members>
+        <members>Container__c.Status__c</members>
+        <members>Container__c.Tank_Serial_Number__c</members>
+        <members>Container__c.Volume_Change__c</members>
+        <members>Services_Needed__c.Total_Container_Capacity__c</members>
+        <members>Services_Needed__c.Total_Container_Fill_Rate__c</members>
+        <members>Services_Needed__c.Total_Current_Container_Level__c</members>
+        <members>WorkOrder.Total_Container_Capacity__c</members>
+        <members>WorkOrder.Total_Container_Fill_Rate__c</members>
+        <members>WorkOrder.Total_Current_Container_Level__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Container__c-Container Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Container__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Container_After_Save_Roll_Up_To_ServiceNeeded</members>
+        <members>Container_Before_Save_Linking_Logic</members>
         <members>Work_Order_Before_Save_Triggered_Flow</members>
         <name>Flow</name>
     </types>
-    <types>
-        <members>Work_Order_Status_Mapping__mdt-Work Order Status Mapping Layout</members>
-        <name>Layout</name>
-    </types>
-    <version>65.0</version>
+    <version>67.0</version>
 </Package>
