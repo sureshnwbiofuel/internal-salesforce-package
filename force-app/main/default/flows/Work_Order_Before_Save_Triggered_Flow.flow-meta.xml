@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
-    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
         <name>Assign_SN_Field_Values</name>
         <label>Assign SN Field Values</label>
@@ -222,6 +221,20 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>$Record.Services_Needed__r.Has_PO__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Total_Current_Container_Level__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Services_Needed__r.Total_Current_Container_Level__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Total_Container_Capacity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Services_Needed__r.Total_Container_Capacity__c</elementReference>
             </value>
         </assignmentItems>
     </assignments>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Container_Model_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(ROUND(Current_Volume__c + Capacity_Left_Volume__c, 0), 40, &apos;ConFab EcoTub 42G&apos;, 49, &apos;ConFab EcoTub 50G&apos;, 55, &apos;Standard 55G Drum&apos;, 77, &apos;ConFab EcoTub 78G&apos;, 135, &apos;ConFab 134G&apos;, 148, &apos;Frontline 3066&apos;, 152, &apos;NW Bio 153G Square&apos;, 187, &apos;NW Bio 188G Square&apos;, 209, &apos;ConFab 209G&apos;, 214, &apos;Frontline 3080&apos;, 314, &apos;ConFab 314G&apos;, 432, &apos;Frontline 4280&apos;, &apos;Unmapped Capacity&apos;)</formula>
+    <label>Container Model Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

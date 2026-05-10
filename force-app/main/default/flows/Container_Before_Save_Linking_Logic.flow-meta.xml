@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <name>Assign_Parent_Lookups</name>
+        <label>Assign Parent Lookups</label>
+        <locationX>176</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Services_Needed__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Services_Needed.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_DetermineAccountId</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>fx_DetermineAccountId</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ISBLANK({!$Record.Received_QBO_ID__c}),
+{!Get_Services_Needed.Account__c},
+{!Get_Account.Id}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>fx_Formatted_SN_Number</name>
+        <dataType>String</dataType>
+        <expression>IF(CONTAINS(MID({!$Record.Received_SN_Number__c}, 4, 255), &quot;-&quot;), &quot;SN-&quot; &amp; MID({!$Record.Received_SN_Number__c}, FIND(&quot;-&quot;, {!$Record.Received_SN_Number__c}, FIND(&quot;-&quot;, {!$Record.Received_SN_Number__c}) + 1) + 1, 255), {!$Record.Received_SN_Number__c})</expression>
+    </formulas>
+    <interviewLabel>Container: Before-Save Linking Logic {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Container Before Save Linking Logic</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account</name>
+        <label>Get Account</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Parent_Lookups</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Customer_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Received_QBO_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Services_Needed</name>
+        <label>Get Services Needed</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>fx_Formatted_SN_Number</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Services_Needed__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Services_Needed</targetReference>
+        </connector>
+        <filterFormula>OR(
+    /* Logic for NEW Records */
+    AND(
+        ISNEW(),
+        OR(
+            NOT(ISBLANK({!$Record.Received_SN_Number__c})),
+            NOT(ISBLANK({!$Record.Received_QBO_ID__c}))
+        )
+    ),
+    /* Logic for UPDATED Records */
+    OR(
+        AND(
+            ISCHANGED({!$Record.Received_SN_Number__c}),
+            NOT(ISBLANK({!$Record.Received_SN_Number__c}))
+        ),
+        AND(
+            ISCHANGED({!$Record.Received_QBO_ID__c}),
+            NOT(ISBLANK({!$Record.Received_QBO_ID__c}))
+        )
+    )
+)</filterFormula>
+        <object>Container__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>
