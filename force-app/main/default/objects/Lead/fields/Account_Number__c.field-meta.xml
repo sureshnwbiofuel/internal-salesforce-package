@@ -4,6 +4,6 @@
     <description>Account Number</description>
     <displayFormat>ACC-{YY}{MM}-{00000}</displayFormat>
     <externalId>false</externalId>
-    <label>Account Number</label>
+    <label>Account Number NOT IN USE</label>
     <type>AutoNumber</type>
 </CustomField>

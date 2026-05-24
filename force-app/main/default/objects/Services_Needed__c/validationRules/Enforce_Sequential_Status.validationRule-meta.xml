@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enforce_Sequential_Status</fullName>
+    <active>true</active>
+    <description>Ensures the status only moves forward one step at a time (Pending ➔ Ready To Service ➔ Serviceable) and prevents skipping or reverting.</description>
+    <errorConditionFormula>AND(
+    ISCHANGED(Status__c),
+    OR(
+        AND(
+            ISPICKVAL(Status__c, &quot;Ready To Service&quot;),
+            NOT(ISPICKVAL(PRIORVALUE(Status__c), &quot;Pending&quot;))
+        ),
+        AND(
+            ISPICKVAL(Status__c, &quot;Serviceable&quot;),
+            NOT(ISPICKVAL(PRIORVALUE(Status__c), &quot;Ready To Service&quot;))
+        ),
+        ISPICKVAL(Status__c, &quot;Pending&quot;)
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Status must progress sequentially: Pending ➔ Ready To Service ➔ Serviceable. You cannot skip steps or revert statuses backwards.</errorMessage>
+</ValidationRule>
