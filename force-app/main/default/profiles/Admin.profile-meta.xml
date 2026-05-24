@@ -1670,16 +1670,6 @@
     </objectPermissions>
     <recordTypeVisibilities>
         <default>true</default>
-        <recordType>Asset.Master_Asset_Record</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>AssetRelationship.HazTrack_Sensor</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
         <recordType>Lead.Both</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
