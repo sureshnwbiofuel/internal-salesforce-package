@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segregation_Of_Duties_Serviceable</fullName>
+    <active>true</active>
+    <description>Prevents the user who stamped &apos;Ready To Service&apos; from also approving the record as &apos;Serviceable&apos;.</description>
+    <errorConditionFormula>AND(
+    ISCHANGED(Status__c),
+    ISPICKVAL(Status__c, &quot;Serviceable&quot;),
+    CASESAFEID(Ready_To_Service_By__c) = CASESAFEID($User.Id)
+)</errorConditionFormula>
+    <errorDisplayField>Status__c</errorDisplayField>
+    <errorMessage>Segregation of Duties: You cannot mark this record as &apos;Serviceable&apos; because you are the user who approved it as &apos;Ready To Service&apos;. A different authorized user must review and approve this.</errorMessage>
+</ValidationRule>

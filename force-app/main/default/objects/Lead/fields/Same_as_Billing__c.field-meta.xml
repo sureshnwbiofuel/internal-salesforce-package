@@ -3,7 +3,7 @@
     <fullName>Same_as_Billing__c</fullName>
     <defaultValue>true</defaultValue>
     <externalId>false</externalId>
-    <label>Same as Billing</label>
+    <label>Same as Billing NOT IN USE</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Checkbox</type>
 </CustomField>

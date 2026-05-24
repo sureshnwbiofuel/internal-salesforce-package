@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Ready_To_Service_Email</name>
+        <label>Send Ready To Service Email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>var_EmailAddresses</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>ACTION REQUIRED: Service Ready for Review {!serviceNeededRecordType}-{!$Record.Name}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBodyTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+    </actionCalls>
     <apiVersion>66.0</apiVersion>
+    <assignments>
+        <name>Assign_Emails</name>
+        <label>Assign Emails</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_EmailAddresses</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Emails.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Emails</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_User_Ids</name>
+        <label>Assign User Ids</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_UserIds</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Users.AssigneeId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Users</targetReference>
+        </connector>
+    </assignments>
     <assignments>
         <name>Count_Service_Needed</name>
         <label>Count Service Needed</label>
@@ -17,11 +83,25 @@
             <targetReference>Update_Account</targetReference>
         </connector>
     </assignments>
+    <customErrors>
+        <name>Error_No_Due_Date</name>
+        <label>Error No Due Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>A Due Date must be populated before moving the status to Ready To Service or Serviceable</errorMessage>
+            <fieldSelection>Due_Date__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
         <name>Check_Account</name>
         <label>Check Account</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Validate_Due_Date</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Exists</name>
@@ -39,9 +119,128 @@
             <label>Exists</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Check_Status_Ready_To_Service</name>
+        <label>Check Status Ready To Service</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Ready_To_Service</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ready To Service</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Ready To Service</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Permission_Set</targetReference>
+            </connector>
+            <label>Is Ready To Service</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_Due_Date</name>
+        <label>Validate Due Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_Status_Ready_To_Service</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Missing_Due_Date</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Due_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Ready To Service</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Serviceable</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_No_Due_Date</targetReference>
+            </connector>
+            <label>Missing Due Date</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>forBaseURL</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Api.Partner_Server_URL_340}, FIND(&quot;/services&quot;, {!$Api.Partner_Server_URL_340}))</expression>
+    </formulas>
+    <formulas>
+        <name>forLinkServiceNeeded</name>
+        <dataType>String</dataType>
+        <expression>{!forBaseURL} &amp; {!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>serviceNeededRecordType</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+ {!$Record.RecordType.DeveloperName},
+&quot;Grease_Trap&quot;, &quot;IGT&quot;,
+&quot;Drain_Cleaning&quot;, &quot;HYD&quot;,
+&quot;Interceptor&quot;, &quot;EGT&quot;,
+&quot;Used_Cooking_Oil&quot;, &quot;UCO&quot;,
+&quot;Waste_Run&quot;,&quot;WR&quot;,
+&quot;&quot;
+)</expression>
+    </formulas>
     <interviewLabel>Service Needed Create Update Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Service Needed Create Update Record Triggered Flow</label>
+    <loops>
+        <name>Loop_Emails</name>
+        <label>Loop Emails</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_User_Emails</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Emails</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Send_Ready_To_Service_Email</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_Users</name>
+        <label>Loop Users</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Permission_Set_Assignments</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_User_Ids</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_User_Emails</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -82,11 +281,77 @@
         <object>Services_Needed__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Permission_Set</name>
+        <label>Get Permission Set</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Permission_Set_Assignments</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Serviceable_Status_Approver</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PermissionSet</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Permission_Set_Assignments</name>
+        <label>Get Permission Set Assignments</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Users</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PermissionSetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Permission_Set.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PermissionSetAssignment</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_User_Emails</name>
+        <label>Get User Emails</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Emails</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>var_UserIds</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <recordUpdates>
         <name>Update_Account</name>
         <label>Update Account</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>Validate_Due_Date</targetReference>
+        </connector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -114,6 +379,11 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>EmailBodyTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hello Team,&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;A new Service Needed record has been marked as &apos;Ready To Service&apos;. Please review the record details, ensure all mandatory fields (Rate, Frequency, etc.) are populated, and update the status to &apos;Serviceable&apos; so the system can generate the required Work Orders.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Link to record: &lt;a href=&quot;{!forLinkServiceNeeded}&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;color: rgb(11, 19, 250);&quot;&gt;&lt;strong&gt;{!serviceNeededRecordType}-{!$Record.Name}&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Thank you,&lt;/p&gt;&lt;p&gt;Salesforce Admin&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
     <variables>
         <name>noServiceNeeded</name>
         <dataType>Number</dataType>
@@ -121,5 +391,19 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <scale>0</scale>
+    </variables>
+    <variables>
+        <name>var_EmailAddresses</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>var_UserIds</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
 </Flow>
