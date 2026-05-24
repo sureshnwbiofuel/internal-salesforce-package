@@ -308,6 +308,13 @@
         <relatedList>RelatedOpportunityList</relatedList>
     </relatedLists>
     <relatedLists>
+        <fields>NAME</fields>
+        <fields>Container_Model_Name__c</fields>
+        <fields>Current_Fill_Rate__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>Container__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
         <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
     <relatedLists>

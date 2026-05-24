@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Split_Multi_Select_Picklist</name>
+        <label>Split Multi-Select Picklist</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>MultiSelectSplitter</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Iterate_Over_Services</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>inputStrings</name>
+            <value>
+                <elementReference>$Record.Services__c</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>MultiSelectSplitter</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>65.0</apiVersion>
     <assignments>
         <name>Assign_AccountId_and_ContactId</name>
@@ -21,78 +41,387 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Service_Needed_Records</targetReference>
+            <targetReference>Same_Update_Account_Record</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Oppty_Id_on_SN</name>
-        <label>Assign Oppty Id on SN</label>
+        <name>EGT_Assign_Opportunity</name>
+        <label>EGT Assign Opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>Iterate_SN_Records.Opportunity__c</assignToReference>
+            <assignToReference>singleOppRecEGT.Service_Type__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Iterate_Oppty_Records.Id</elementReference>
+                <elementReference>Iterate_Over_Services</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>Iterate_SN_Records.Account__c</assignToReference>
+            <assignToReference>singleOppRecEGT.AccountId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Iterate_Oppty_Records.AccountId</elementReference>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.LeadSource</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadSource</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunitName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>oppCloseDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.Lead__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.EGT_Rate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.EGT_Rate__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecEGT.EGT_Frequency_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.EGT_Frequency_Days__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Assign_SN_Records</targetReference>
+            <targetReference>listOfOpportunities_EGT</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_SN_Records</name>
-        <label>Assign SN Records</label>
+        <name>HYD_Assign_Opportunity</name>
+        <label>HYD Assign Opportunity</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>UpdateSNRecords</assignToReference>
+            <assignToReference>singleOppRecHYD.Service_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Iterate_Over_Services</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.LeadSource</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadSource</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunitName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>oppCloseDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.Lead__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.HYD_Rate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.HYD_Rate__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecHYD.HYD_Frequency_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.HYD_Frequency_Days__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>listOfOpportunities_HYD</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>IGT_Assign_Opportunity</name>
+        <label>IGT Assign Opportunity</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.Service_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Iterate_Over_Services</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.LeadSource</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadSource</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunitName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>oppCloseDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.Lead__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.IGT_Rate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.IGT_Rate__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRecIGT.IGT_Frequency_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.IGT_Frequency_Days__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>listOfOpportunities_IGT</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>listOfOpportunities</name>
+        <label>listOfOpportunities</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>listOfOppRec</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>Iterate_SN_Records</elementReference>
+                <elementReference>singleOppRec</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Iterate_SN_Records</targetReference>
+            <targetReference>Iterate_Over_Services</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Count_of_Service_Needed</name>
-        <label>Count of Service Needed</label>
+        <name>listOfOpportunities_EGT</name>
+        <label>listOfOpportunities EGT</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>countOfSN</assignToReference>
-            <operator>AssignCount</operator>
-            <value>
-                <elementReference>greaseTrapSNRecords</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Check_Shipping_Same_as_Billing</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>GreaseTrap_Records</name>
-        <label>GreaseTrap Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>greaseTrapSNRecords</assignToReference>
+            <assignToReference>listOfOppRec</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>Get_Grease_Trap_SN</elementReference>
+                <elementReference>singleOppRecEGT</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Grease_Trap_SN</targetReference>
+            <targetReference>Iterate_Over_Services</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>listOfOpportunities_HYD</name>
+        <label>listOfOpportunities HYD</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>listOfOppRec</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>singleOppRecHYD</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_Services</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>listOfOpportunities_IGT</name>
+        <label>listOfOpportunities IGT</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>listOfOppRec</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>singleOppRecIGT</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Iterate_Over_Services</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>UCO_Assign_Opportunity</name>
+        <label>UCO Assign Opportunity</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>singleOppRec.Service_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Iterate_Over_Services</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.ContactId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.LeadSource</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.LeadSource</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>opportunitName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.StageName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Qualification</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.CloseDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>oppCloseDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.Lead__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.UCO_Gal_Month__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.UCO_Gal_Month__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>singleOppRec.UCO_Commodity_Value__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.UCO_Commodity_Value__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>listOfOpportunities</targetReference>
         </connector>
     </assignments>
     <decisions>
@@ -130,114 +459,95 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_for_Account_Number</name>
-        <label>Check for Account Number</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Iterate_SN_Records</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Account_Number_Matches</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>OppServiceNumber</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>Iterate_SN_Records.Name</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Iterate_SN_Records.Opportunity__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Iterate_SN_Records.Account__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Oppty_Id_on_SN</targetReference>
-            </connector>
-            <label>Account Number Matches</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_for_Update_SN_Records</name>
-        <label>Check for Update SN Records</label>
+        <name>Check_Lead_Services</name>
+        <label>Check Lead Services</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>SN_Records_Exists</name>
+            <name>Services_Not_Null</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>UpdateSNRecords</leftValueReference>
+                <leftValueReference>$Record.Services__c</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_SN_Records</targetReference>
+                <targetReference>Split_Multi_Select_Picklist</targetReference>
             </connector>
-            <label>SN Records Exists</label>
+            <label>Services Not Null</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Check_Record_Type</name>
-        <label>Check Record Type</label>
+        <name>Check_Service</name>
+        <label>Check Service</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnector>
-            <targetReference>Get_Grease_Trap_SN</targetReference>
+            <targetReference>Iterate_Over_Services</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Grease_Trap</name>
+            <name>UCO</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Grease_Trap_SN.RecordType.Name</leftValueReference>
+                <leftValueReference>Iterate_Over_Services</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Grease Trap</stringValue>
+                    <stringValue>UCO</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>GreaseTrap_Records</targetReference>
+                <targetReference>UCO_Assign_Opportunity</targetReference>
             </connector>
-            <label>Grease Trap</label>
+            <label>UCO</label>
         </rules>
-    </decisions>
-    <decisions>
-        <name>Check_Shipping_Same_as_Billing</name>
-        <label>Check Shipping Same as Billing</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>Same_Update_Account_Record</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Same</defaultConnectorLabel>
         <rules>
-            <name>Not_Same</name>
+            <name>IGT</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.Same_as_Billing__c</leftValueReference>
+                <leftValueReference>Iterate_Over_Services</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <stringValue>IGT</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_Account_Record</targetReference>
+                <targetReference>IGT_Assign_Opportunity</targetReference>
             </connector>
-            <label>Not Same</label>
+            <label>IGT</label>
+        </rules>
+        <rules>
+            <name>EGT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Iterate_Over_Services</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EGT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>EGT_Assign_Opportunity</targetReference>
+            </connector>
+            <label>EGT</label>
+        </rules>
+        <rules>
+            <name>HYD</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Iterate_Over_Services</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>HYD</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>HYD_Assign_Opportunity</targetReference>
+            </connector>
+            <label>HYD</label>
         </rules>
     </decisions>
     <decisions>
@@ -269,14 +579,14 @@
         <expression>ISNEW()</expression>
     </formulas>
     <formulas>
-        <name>OppServiceNumber</name>
-        <dataType>String</dataType>
-        <expression>RIGHT({!Iterate_Oppty_Records.Name},7)</expression>
+        <name>oppCloseDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+30</expression>
     </formulas>
     <formulas>
-        <name>OpptyAccountNumber</name>
-        <dataType>Boolean</dataType>
-        <expression>IF(RIGHT({!Iterate_Oppty_Records.Name},18)={!Iterate_SN_Records.Account_Number__c}, true, false)</expression>
+        <name>opportunitName</name>
+        <dataType>String</dataType>
+        <expression>&apos;Opportunity_&apos;+{!$Record.Account_Number__c}+&apos;_&apos;+{!Iterate_Over_Services}</expression>
     </formulas>
     <formulas>
         <name>pocFullName</name>
@@ -286,45 +596,17 @@
     <interviewLabel>Lead Record Triggered After Save Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Lead Record Triggered After Save Create/Update</label>
     <loops>
-        <name>Get_Grease_Trap_SN</name>
-        <label>Get Grease Trap SN</label>
+        <name>Iterate_Over_Services</name>
+        <label>Iterate Over Services</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <collectionReference>Get_Service_Needed_Records</collectionReference>
+        <collectionReference>Split_Multi_Select_Picklist</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
-            <targetReference>Check_Record_Type</targetReference>
+            <targetReference>Check_Service</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Count_of_Service_Needed</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>Iterate_Oppty_Records</name>
-        <label>Iterate Oppty Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <collectionReference>Get_Opportunity_Records</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Iterate_SN_Records</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Check_for_Update_SN_Records</targetReference>
-        </noMoreValuesConnector>
-    </loops>
-    <loops>
-        <name>Iterate_SN_Records</name>
-        <label>Iterate SN Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <collectionReference>Get_Service_Needed_Records</collectionReference>
-        <iterationOrder>Asc</iterationOrder>
-        <nextValueConnector>
-            <targetReference>Check_for_Account_Number</targetReference>
-        </nextValueConnector>
-        <noMoreValuesConnector>
-            <targetReference>Iterate_Oppty_Records</targetReference>
+            <targetReference>Create_Opportunities</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -347,64 +629,19 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>Create_Opportunity_Records</name>
-        <label>Create Opportunity Records</label>
+        <name>Create_Opportunities</name>
+        <label>Create Opportunities</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>Get_Opportunity_Records</targetReference>
-        </connector>
-        <inputReference>Transform_SN_to_OPP</inputReference>
+        <inputReference>listOfOppRec</inputReference>
     </recordCreates>
-    <recordLookups>
-        <name>Get_Opportunity_Records</name>
-        <label>Get Opportunity Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Iterate_Oppty_Records</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.ConvertedAccountId</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Opportunity</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Service_Needed_Records</name>
-        <label>Get Service Needed Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Grease_Trap_SN</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Lead__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>Services_Needed__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
         <name>Same_Update_Account_Record</name>
         <label>Update Account Record</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Transform_SN_to_OPP</targetReference>
+            <targetReference>Check_Lead_Services</targetReference>
         </connector>
         <filterLogic>1</filterLogic>
         <filters>
@@ -414,12 +651,6 @@
                 <elementReference>$Record.ConvertedAccountId</elementReference>
             </value>
         </filters>
-        <inputAssignments>
-            <field>AccountNumber</field>
-            <value>
-                <elementReference>$Record.Account_Number__c</elementReference>
-            </value>
-        </inputAssignments>
         <inputAssignments>
             <field>BillingCity</field>
             <value>
@@ -463,18 +694,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Billing_Email__c</field>
-            <value>
-                <elementReference>$Record.Billing_Email__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>County__c</field>
-            <value>
-                <elementReference>$Record.County__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Customer_Name__c</field>
             <value>
                 <elementReference>pocFullName</elementReference>
@@ -487,18 +706,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Location_Check_in_Time__c</field>
-            <value>
-                <elementReference>$Record.Check_in_Time_Mins__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Location_Notes__c</field>
-            <value>
-                <elementReference>$Record.Location_Notes__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Notification_Email__c</field>
             <value>
                 <elementReference>$Record.Email</elementReference>
@@ -508,18 +715,6 @@
             <field>Notification_Phone_Number__c</field>
             <value>
                 <elementReference>$Record.Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Notification_Preference__c</field>
-            <value>
-                <elementReference>$Record.Notification_Preference__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Number_of_GRDs__c</field>
-            <value>
-                <elementReference>countOfSN</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -564,194 +759,7 @@
                 <elementReference>$Record.Street</elementReference>
             </value>
         </inputAssignments>
-        <inputAssignments>
-            <field>Status__c</field>
-            <value>
-                <stringValue>Active</stringValue>
-            </value>
-        </inputAssignments>
         <inputReference>$Record.Account__r</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Account_Record</name>
-        <label>Update Account Record</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Transform_SN_to_OPP</targetReference>
-        </connector>
-        <filterLogic>1</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.ConvertedAccountId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>AccountNumber</field>
-            <value>
-                <elementReference>$Record.Account_Number__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingCity</field>
-            <value>
-                <elementReference>$Record.City</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingCountry</field>
-            <value>
-                <elementReference>$Record.Country</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingLatitude</field>
-            <value>
-                <elementReference>$Record.Latitude</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingLongitude</field>
-            <value>
-                <elementReference>$Record.Longitude</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingPostalCode</field>
-            <value>
-                <elementReference>$Record.PostalCode</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingState</field>
-            <value>
-                <elementReference>$Record.State</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingStreet</field>
-            <value>
-                <elementReference>$Record.Street</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Billing_Email__c</field>
-            <value>
-                <elementReference>$Record.Billing_Email__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>County__c</field>
-            <value>
-                <elementReference>$Record.County__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Customer_Name__c</field>
-            <value>
-                <elementReference>pocFullName</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Internal_Notes__c</field>
-            <value>
-                <elementReference>$Record.Internal_Notes__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Location_Check_in_Time__c</field>
-            <value>
-                <elementReference>$Record.Check_in_Time_Mins__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Location_Notes__c</field>
-            <value>
-                <elementReference>$Record.Location_Notes__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Notification_Email__c</field>
-            <value>
-                <elementReference>$Record.Email</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Notification_Phone_Number__c</field>
-            <value>
-                <elementReference>$Record.Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Notification_Preference__c</field>
-            <value>
-                <elementReference>$Record.Notification_Preference__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Number_of_GRDs__c</field>
-            <value>
-                <elementReference>countOfSN</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingCity</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__City__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingCountry</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__CountryCode__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingLatitude</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__Latitude__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingLongitude</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__Longitude__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingPostalCode</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__PostalCode__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingState</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__StateCode__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>ShippingStreet</field>
-            <value>
-                <elementReference>$Record.Shipping_Address__Street__s</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Status__c</field>
-            <value>
-                <stringValue>Active</stringValue>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record.Account__r</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_SN_Records</name>
-        <label>Update SN Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <inputReference>UpdateSNRecords</inputReference>
     </recordUpdates>
     <start>
         <locationX>0</locationX>
@@ -764,65 +772,6 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
-    <transforms>
-        <name>Transform_SN_to_OPP</name>
-        <label>Transform SN to OPP</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Create_Opportunity_Records</targetReference>
-        </connector>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <objectType>Opportunity</objectType>
-        <scale>0</scale>
-        <transformValues>
-            <transformValueActions>
-                <outputFieldApiName>CloseDate</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <formulaDataType>Date</formulaDataType>
-                    <formulaExpression>TODAY() + 30</formulaExpression>
-                </value>
-            </transformValueActions>
-            <transformValueActions>
-                <outputFieldApiName>Name</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <formulaDataType>String</formulaDataType>
-                    <formulaExpression>&apos;Opportunity_&apos;+{!Get_Service_Needed_Records[$EachItem].Name}</formulaExpression>
-                </value>
-            </transformValueActions>
-            <transformValueActions>
-                <outputFieldApiName>StageName</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <stringValue>Qualification</stringValue>
-                </value>
-            </transformValueActions>
-            <transformValueActions>
-                <outputFieldApiName>AccountId</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <elementReference>AccountId</elementReference>
-                </value>
-            </transformValueActions>
-            <transformValueActions>
-                <outputFieldApiName>ContactId</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <elementReference>ContactId</elementReference>
-                </value>
-            </transformValueActions>
-            <transformValueActions>
-                <outputFieldApiName>Amount</outputFieldApiName>
-                <transformType>Map</transformType>
-                <value>
-                    <elementReference>Get_Service_Needed_Records[$EachItem].Rate__c</elementReference>
-                </value>
-            </transformValueActions>
-        </transformValues>
-    </transforms>
     <variables>
         <name>AccountId</name>
         <dataType>String</dataType>
@@ -852,6 +801,53 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>Services_Needed__c</objectType>
+    </variables>
+    <variables>
+        <name>listOfOppRec</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>picklistValueCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>singleOppRec</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>singleOppRecEGT</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>singleOppRecHYD</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>singleOppRecIGT</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
     </variables>
     <variables>
         <name>UpdateSNRecords</name>

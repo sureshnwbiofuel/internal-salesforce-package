@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EGT_Rate__c</fullName>
+    <description>Service rate charged per Exterior Grease Trap (EGT) cleaning visit. Used to calculate EGT revenue.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the amount charged per EGT service visit.</inlineHelpText>
+    <label>EGT Rate</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Currency</type>
+</CustomField>

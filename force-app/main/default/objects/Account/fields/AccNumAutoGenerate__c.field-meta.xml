@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccNumAutoGenerate__c</fullName>
+    <description>Auto Generate Account Number and set it on the Standard Account Number field</description>
+    <displayFormat>ACC-{YY}{MM}{DD}-{000}</displayFormat>
+    <externalId>true</externalId>
+    <label>AccNumAutoGenerate</label>
+    <type>AutoNumber</type>
+</CustomField>

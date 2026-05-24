@@ -1,31 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>65.0</apiVersion>
+    <customErrors>
+        <name>Account_Number_Validation</name>
+        <label>Account Number Validation</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>The Account Number is a system-generated field and cannot be modified after creation.</errorMessage>
+            <fieldSelection>AccountNumber</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
     <decisions>
-        <name>Check_SN_Record_Exists</name>
-        <label>Check SN Record Exists</label>
+        <name>Check_Account_Number</name>
+        <label>Check Account Number</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Exists</name>
+            <name>Account_Number_Modified</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_SN_Records</leftValueReference>
+                <leftValueReference>$Record.AccountNumber</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountNumber</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountNumber</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.AccNumAutoGenerate__c</elementReference>
+                </rightValue>
+            </conditions>
             <connector>
-                <targetReference>Update_SN_Records</targetReference>
+                <targetReference>Account_Number_Validation</targetReference>
             </connector>
-            <label>Exists</label>
+            <label>Account Number Modified</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Create_Update_Record</name>
+        <label>Check Create Update Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_Account_Number</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update</defaultConnectorLabel>
+        <rules>
+            <name>Create</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isCreate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Number</targetReference>
+            </connector>
+            <label>Create</label>
         </rules>
     </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>isCreate</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
     <interviewLabel>Account Update Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Account Update Record Triggered Flow</label>
+    <label>Account Create Update Record Triggered Flow</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -45,63 +100,27 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordLookups>
-        <name>Get_SN_Records</name>
-        <label>Get SN Records</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_SN_Record_Exists</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Account_Number__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.AccountNumber</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue></stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Services_Needed__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
-        <name>Update_SN_Records</name>
-        <label>Update SN Records</label>
+        <name>Update_Account_Number</name>
+        <label>Update Account Number</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Account_Number__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.AccountNumber</elementReference>
-            </value>
-        </filters>
         <inputAssignments>
-            <field>Account__c</field>
+            <field>AccountNumber</field>
             <value>
-                <elementReference>$Record.Id</elementReference>
+                <elementReference>$Record.AccNumAutoGenerate__c</elementReference>
             </value>
         </inputAssignments>
-        <object>Services_Needed__c</object>
+        <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_SN_Records</targetReference>
+            <targetReference>Check_Create_Update_Record</targetReference>
         </connector>
         <object>Account</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>

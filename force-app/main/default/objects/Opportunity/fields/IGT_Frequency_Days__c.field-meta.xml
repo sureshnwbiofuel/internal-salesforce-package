@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IGT_Frequency_Days__c</fullName>
+    <description>Number of days between Indoor Grease Trap (IGT) service visits. Used to calculate annual service frequency and IGT revenue.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Enter the number of days between IGT service visits (e.g., 30 for monthly service).</inlineHelpText>
+    <label>IGT Frequency Days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Shipping_Address__c</fullName>
     <externalId>false</externalId>
-    <label>Shipping Address</label>
+    <label>Shipping Address NOT IN USE</label>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Address</type>
 </CustomField>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <assignments>
+        <name>Assign_Service_Needed</name>
+        <label>Assign Service Needed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_RecordTypeId.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Order_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>serviceNeededOrderType</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Opportunity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Monthly_Gallons__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fm_MonthlyGallonsAssignment</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Rate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_DynamicRate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Frequency_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_DynamicFrequency</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Skills__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fx_DynamicSkill</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Communication_Preference__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Account.Notification_Preference__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Notification_Email__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Account.Notification_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>createServiceNeeded.Notification_Phone_Number__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Account.Notification_Phone_Number__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Service_Needed_Records</targetReference>
+        </connector>
+    </assignments>
+    <description>Create Service Needed Record</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fm_MonthlyGallonsAssignment</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+  TEXT( {!$Record.Service_Type__c})= &quot;UCO&quot;,
+    VALUE(TEXT({!$Record.Lead__r.UCO_Gal_Month__c})), 
+    NULL
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>fx_DynamicFrequency</name>
+        <dataType>Number</dataType>
+        <expression>CASE(TEXT({!$Record.Service_Type__c}),
+    &quot;IGT&quot;, {!$Record.IGT_Frequency_Days__c},
+    &quot;EGT&quot;, {!$Record.EGT_Frequency_Days__c},
+    &quot;HYD&quot;, {!$Record.HYD_Frequency_Days__c},
+    NULL
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>fx_DynamicRate</name>
+        <dataType>Currency</dataType>
+        <expression>CASE(TEXT({!$Record.Service_Type__c}),
+    &quot;IGT&quot;, {!$Record.IGT_Rate__c},
+    &quot;EGT&quot;, {!$Record.EGT_Rate__c},
+    &quot;HYD&quot;, {!$Record.HYD_Rate__c},
+    NULL
+)</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>fx_DynamicSkill</name>
+        <dataType>String</dataType>
+        <expression>CASE(TEXT({!$Record.Service_Type__c}),
+    &quot;UCO&quot;, &quot;UCO&quot;,
+    &quot;IGT&quot;, &quot;GT&quot;,
+    &quot;EGT&quot;, &quot;INT&quot;,
+    &quot;HYD&quot;, &quot;HYD&quot;,
+    NULL
+)</expression>
+    </formulas>
+    <formulas>
+        <name>serviceNeededOrderType</name>
+        <dataType>String</dataType>
+        <expression>CASE( TEXT({!$Record.Service_Type__c}), 
+  &quot;UCO&quot;, &quot;T&quot;, 
+  &quot;IGT&quot;, &quot;T&quot;, 
+  &quot;EGT&quot;, &quot;T&quot;, 
+  &quot;HYD&quot;, &quot;P&quot;, 
+  &quot;WR&quot;, &quot;D&quot;, 
+  NULL 
+)</expression>
+    </formulas>
+    <formulas>
+        <name>serviceNeededRecordType</name>
+        <dataType>String</dataType>
+        <expression>CASE( TEXT({!$Record.Service_Type__c}), 
+  &quot;UCO&quot;, &quot;Used_Cooking_Oil&quot;, 
+  &quot;EGT&quot;, &quot;Interceptor&quot;, 
+  &quot;IGT&quot;, &quot;Grease_Trap&quot;, 
+  &quot;HYD&quot;, &quot;Drain_Cleaning&quot;, 
+  &quot;WR&quot;, &quot;Waste_Run&quot;, 
+  NULL 
+)</expression>
+    </formulas>
+    <interviewLabel>ServiceNeededCreation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ServiceNeededCreation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Service_Needed_Records</name>
+        <label>Create Service Needed Records</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>createServiceNeeded</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_RecordTypeId</name>
+        <label>Get RecordTypeId</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Service_Needed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>serviceNeededRecordType</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Services_Needed__c</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_RecordTypeId</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>createServiceNeeded</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Services_Needed__c</objectType>
+    </variables>
+</Flow>
