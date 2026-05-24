@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -350,18 +349,6 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Restrict_Scheduling_Dates__c.Services_Needed__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>FULL_NAME</fields>
-        <fields>LEAD.COMPANY</fields>
-        <fields>LEAD.PHONE</fields>
-        <fields>LEAD.MOBILE_PHONE</fields>
-        <fields>LEAD.EMAIL</fields>
-        <fields>LEAD.STATUS</fields>
-        <fields>CORE.USERS.ALIAS</fields>
-        <fields>LEAD.LEAD_SOURCE</fields>
-        <fields>LEAD.ANNUAL_REVENUE</fields>
-        <relatedList>Lead.Services_Needed__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

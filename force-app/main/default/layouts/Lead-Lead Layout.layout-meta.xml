@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>DataDotComClean</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
@@ -64,10 +66,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Services__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Services_Needed__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -425,11 +423,6 @@
         <summaryLayoutItems>
             <field>LeadSource</field>
             <posX>1</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Services_Needed__c</field>
-            <posX>2</posX>
             <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
